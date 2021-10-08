@@ -14,7 +14,7 @@ public class Periodicite {
 	private int id_periodicite;
 	private String libelle;
 
-	public Périodicité() {
+	public Periodicite() {
 		// TODO Auto-generated constructor stub
 	}
 
