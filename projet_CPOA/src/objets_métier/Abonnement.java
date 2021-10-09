@@ -47,8 +47,6 @@ public class Abonnement {
 	 * @return the date_debut
 	 */
 	public Date getDate_debut() {
-		DateTimeFormatter formatage = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		date_debut.toLocalDate();
 		return date_debut;
 	}
 
@@ -56,8 +54,6 @@ public class Abonnement {
 	 * @param date_debut the date_debut to set
 	 */
 	public void setDate_debut(Date date_debut) {
-		DateTimeFormatter formatage = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		date_debut.toLocalDate();
 		this.date_debut = date_debut;
 	}
 
@@ -65,8 +61,6 @@ public class Abonnement {
 	 * @return the date_fin
 	 */
 	public Date getDate_fin() {
-		DateTimeFormatter formatage = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		date_debut.toLocalDate();
 		return date_fin;
 	}
 
@@ -74,8 +68,6 @@ public class Abonnement {
 	 * @param date_fin the date_fin to set
 	 */
 	public void setDate_fin(Date date_fin) {
-		DateTimeFormatter formatage = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		date_debut.toLocalDate();
 		this.date_fin = date_fin;
 	}
 

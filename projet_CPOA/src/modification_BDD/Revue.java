@@ -1,6 +1,3 @@
-/**
- * 
- */
 package modification_BDD;
 
 import java.sql.Connection;
