@@ -1,14 +1,20 @@
 package objets_métier;
 
 public class Periodicite {
-	
-	public Periodicite(int i, String string) {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public String toString() {
 		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+	}
+
+	/**
+	 * @param id_periodicite
+	 * @param libelle
+	 */
+	public Periodicite(int id_periodicite, String libelle) {
+		super();
+		this.id_periodicite = id_periodicite;
+		this.libelle = libelle;
 	}
 
 	private int id_periodicite;

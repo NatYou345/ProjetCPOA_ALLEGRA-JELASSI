@@ -1,4 +1,3 @@
-
 package dao.listememoire;
 
 import java.util.ArrayList;
@@ -31,11 +30,20 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 		this.donnees.add(new Abonnement(0, 0, null, null, null));
 	}
 
+	public Abonnement getById(int id) {
+
+		int idx = this.donnees.indexOf(new Abonnement(id, 0, null, null, null));
+		if (idx == -1) {
+			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
+		} else {
+			return this.donnees.get(idx);
+		}
+	}
 
 	public boolean create(Abonnement objet) {
 
 		objet.setId_abonnement(3);
-		// Ne fonctionne que si l'objet métier est bien fait...
+
 		while (this.donnees.contains(objet)) {
 
 			objet.setId_abonnement(objet.getId_abonnement() + 1);
@@ -47,7 +55,6 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 
 	public boolean update(Abonnement objet) {
 		
-		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(objet);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de modification d'un objet inexistant");
@@ -63,7 +70,6 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 
 		Abonnement supprime;
 		
-		// Ne fonctionne que si l'objet métier est bien fait...
 		int idx = this.donnees.indexOf(objet);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
@@ -73,36 +79,8 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 		
 		return objet.equals(supprime);
 	}
-
-	public Abonnement getById(int id) {
-		// Ne fonctionne que si l'objet métier est bien fait...
-		int idx = this.donnees.indexOf(new Abonnement(id, 0, null, null, null));
-		if (idx == -1) {
-			throw new IllegalArgumentException("Aucun objet ne possède cet identifiant");
-		} else {
-			return this.donnees.get(idx);
-		}
-	}
-
+	
 	public ArrayList<Abonnement> findAll() {
 		return (ArrayList<Abonnement>) this.donnees;
-	}
-
-	@Override
-	public boolean create(Object object) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean update(Object object) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean delete(Object object) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

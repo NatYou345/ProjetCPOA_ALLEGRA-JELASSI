@@ -1,8 +1,13 @@
-package general_DAO;
+package dao.MySQL;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import general_DAO.ClientDAO;
+import general_DAO.DAO;
 import objets_métier.Client;
 
-public class MySQLClientDAO implements DAO<Client>{
+public class MySQLClientDAO implements DAO<Client>, ClientDAO{
 	
 
 private static MySQLClientDAO instance;
@@ -38,5 +43,11 @@ public boolean update(Client object) {
 public boolean delete(Client object) {
 	// TODO Auto-generated method stub
 	return false;
+}
+
+@Override
+public ArrayList<Client> findAll() throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
 }
 }

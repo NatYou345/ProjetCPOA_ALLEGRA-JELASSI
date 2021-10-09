@@ -1,8 +1,13 @@
-package general_DAO;
+package dao.MySQL;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import general_DAO.DAO;
+import general_DAO.RevueDAO;
 import objets_métier.Revue;
 
-public class MySQLRevueDAO implements DAO<Revue>{
+public class MySQLRevueDAO implements DAO<Revue>, RevueDAO{
 	
 
 private static MySQLRevueDAO instance;
@@ -38,5 +43,11 @@ public boolean update(Revue object) {
 public boolean delete(Revue object) {
 	// TODO Auto-generated method stub
 	return false;
+}
+
+@Override
+public ArrayList<Revue> findAll() throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
 }
 }

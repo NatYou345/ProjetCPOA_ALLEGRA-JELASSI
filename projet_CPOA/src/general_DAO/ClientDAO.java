@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import objets_métier.Client;
 
-public interface ClientDAO {
+public interface ClientDAO extends DAO<Client>{
 	
 	
 	public ArrayList<Client> findAll() throws SQLException;

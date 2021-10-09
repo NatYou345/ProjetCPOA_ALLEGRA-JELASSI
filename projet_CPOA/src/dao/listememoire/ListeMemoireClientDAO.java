@@ -34,7 +34,6 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 
-	@Override
 	public boolean create(Client objet) {
 
 		objet.setId_client(3);
@@ -48,7 +47,6 @@ public class ListeMemoireClientDAO implements ClientDAO {
 		return ok;
 	}
 
-	@Override
 	public boolean update(Client objet) {
 		
 		// Ne fonctionne que si l'objet métier est bien fait...
@@ -63,7 +61,6 @@ public class ListeMemoireClientDAO implements ClientDAO {
 		return true;
 	}
 
-	@Override
 	public boolean delete(Client objet) {
 
 		Client supprime;

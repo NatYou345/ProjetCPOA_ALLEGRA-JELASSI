@@ -18,16 +18,29 @@ public class Client
 	        this.maConnexion=new Connexion();
 	    }
 
-	public void requeteAjouterClient(int id_periodicite, String libelle) 
+	public void requeteAjouterClient(int id_client, 
+									String nom, 
+									String prenom, 
+									String no_rue, 
+									String voie, 
+									String code_postal, 
+									String ville,
+									String pays) 
 	{
 
 		try {
 			Connection laConnexion = maConnexion.creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement(" insert into Periodicite (id_periodicite, libelle) values (?,?)"); 
-			requete.setInt(1, id_periodicite);
-			requete.setString(2, libelle);
+			PreparedStatement requete = laConnexion.prepareStatement(" insert into Client (id_client, nom, prenom, no_rue, voie, code_postal, ville, pays) values (?,?,?,?,?,?,?,?)"); 
+			requete.setInt(1, id_client);
+			requete.setString(2, nom);
+			requete.setString(3, prenom);
+			requete.setString(4, no_rue);
+			requete.setString(5, voie);
+			requete.setString(6, code_postal);
+			requete.setString(7, ville);
+			requete.setString(8, pays);
 			
-			int nbPeriodicite = requete.executeUpdate();
+			int nbClient = requete.executeUpdate();
 			
 			if (requete != null)
 				requete.close();
@@ -39,15 +52,15 @@ public class Client
 		}
 	}
 	
-	public void requeteRetirerPeriodicite(int id_periodicite)
+	public void requeteRetirerClient(int id_client)
 	{
 
 		try {
 			Connection laConnexion = maConnexion.creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement(" delete from Periodicite where id_periodicite =?");
-			requete.setInt(1, id_periodicite);
+			PreparedStatement requete = laConnexion.prepareStatement(" delete from Client where id_client =?");
+			requete.setInt(1, id_client);
 			
-			int nbPeriodicite = requete.executeUpdate();
+			int nbClient = requete.executeUpdate();
 			
 			if (requete != null)
 				requete.close();
@@ -59,17 +72,30 @@ public class Client
 		}
 	}
 	
-	public void requeteModifierPeriodicite(int id_periodicite, String libelle)
+	public void requeteModifierClient(int id_client, 
+										String nom, 
+										String prenom, 
+										String no_rue, 
+										String voie, 
+										String code_postal, 
+										String ville,
+										String pays)
 	{
 
 		try {
 			Connection laConnexion = maConnexion.creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement(" update Periodicite SET libelle =? where id_periodicite=?"); 
-			requete.setInt(1, id_periodicite);
-			requete.setString(2, libelle);
+			PreparedStatement requete = laConnexion.prepareStatement(" update Client SET libelle =? where id_client=?"); 
+			requete.setInt(1, id_client);
+			requete.setString(2, nom);
+			requete.setString(3, prenom);
+			requete.setString(4, no_rue);
+			requete.setString(5, voie);
+			requete.setString(6, code_postal);
+			requete.setString(7, ville);
+			requete.setString(8, pays);
 
 			
-			int nbPeriodicite = requete.executeUpdate();
+			int nbClient = requete.executeUpdate();
 			
 			if (requete != null)
 				requete.close();

@@ -9,26 +9,26 @@ import general_DAO.ClientDAO;
 import general_DAO.PeriodiciteDAO;
 import general_DAO.RevueDAO;
 
-public class ListeMemoireDAOFactory extends
-DAOFactory {
+public class ListeMemoireDAOFactory extends DAOFactory {
+
 @Override
 public ClientDAO getClientDAO() {
-return ListeMemoireClientDAO.getInstance();
+	return ListeMemoireClientDAO.getInstance();
 }
 
 @Override
 public AbonnementDAO getAbonnementDAO() {
-return ListeMemoireAbonnementDAO.getInstance();
+	return ListeMemoireAbonnementDAO.getInstance();
 }
 
 @Override
 public PeriodiciteDAO getPeriodiciteDAO() {
-return ListeMemoirePeriodiciteDAO.getInstance();
+	return ListeMemoirePeriodiciteDAO.getInstance();
 }
 
 @Override
 public RevueDAO getRevueDAO() {
-return ListeMemoireRevueDAO.getInstance();
+	return ListeMemoireRevueDAO.getInstance();
 }
 
 }

@@ -1,8 +1,13 @@
-package general_DAO;
+package dao.MySQL;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import general_DAO.AbonnementDAO;
+import general_DAO.DAO;
 import objets_métier.Abonnement;
 
-public class MySQLAbonnementDAO implements DAO<Abonnement>{
+public class MySQLAbonnementDAO implements DAO<Abonnement>, AbonnementDAO{
 	
 
 private static MySQLAbonnementDAO instance;
@@ -38,5 +43,11 @@ public boolean update(Abonnement object) {
 public boolean delete(Abonnement object) {
 	// TODO Auto-generated method stub
 	return false;
+}
+
+@Override
+public ArrayList<Abonnement> findAll() throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
 }
 }
