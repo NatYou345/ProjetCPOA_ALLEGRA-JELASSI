@@ -2,34 +2,12 @@ package objets_métier;
 
 public class Periodicite {
 
-	@Override
-	public String toString() {
-		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
-	}
-
-	/**
-	 * @param id_periodicite
-	 * @param libelle
-	 */
-	public Periodicite(int id_periodicite, String libelle) {
-		super();
-		this.id_periodicite = id_periodicite;
-		this.libelle = libelle;
-	}
-
 	private int id_periodicite;
 	private String libelle;
 
-	public Periodicite() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Periodicite(int id_periodicite, String libelle) {
+		this.id_periodicite = id_periodicite;
+		this.libelle = libelle;
 	}
 
 	/**
@@ -60,6 +38,9 @@ public class Periodicite {
 		this.libelle = libelle;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+	}
 
 }

@@ -84,7 +84,7 @@ public class Client
 
 		try {
 			Connection laConnexion = maConnexion.creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement(" update Client SET libelle =? where id_client=?"); 
+			PreparedStatement requete = laConnexion.prepareStatement(" update Client SET nom =?, prenom =?, no_rue =?, voie =?, code_postal =?, ville =?, pays =? where id_client=?"); 
 			requete.setInt(1, id_client);
 			requete.setString(2, nom);
 			requete.setString(3, prenom);

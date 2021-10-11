@@ -1,6 +1,10 @@
-package modification_BDD;
+package projet;
 
 import java.util.Scanner;
+
+import Factory.DAOFactory;
+import solutionPersistance.Persistance;
+import objets_métier.Periodicite;
 
 /**
  * @author natha
@@ -30,7 +34,13 @@ public class Menu {
 	       case 1: 
 	           switch (action) {
 	           case 1:
-	        	   
+	        	   Scanner sc = new Scanner(System.in);
+	        	   System.out.println("Quelle est la périodicité ?");
+	        	   String period1 =sc.nextLine();
+	        	   DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MYSQL);
+	        	   Periodicite p = new Periodicite(1,period1);
+	        	   daos.getPeriodiciteDAO().create(p);
+	        	   //lignePeriod.requeteAjouterPeriodicite(period1);
 	        	   break;
 	           case 2:
 	        	   break;
@@ -51,13 +61,16 @@ public class Menu {
 	           break;
 	   
 	       case 3:
-	    	   Periodicite lignePeriod = new Periodicite();
+	    	   // Periodicite lignePeriod = new Periodicite();
 	    	   switch (action) {
 	           case 1:
 	        	   Scanner sc2 = new Scanner(System.in);
 	        	   System.out.println("Quelle est la périodicité ?");
 	        	   String period1 =sc2.nextLine();
-	        	   lignePeriod.requeteAjouterPeriodicite(period1);
+	        	   DAOFactory daos = DAOFactory.getDAOFactory(Persistance.MYSQL);
+	        	   Periodicite p = new Periodicite(1,period1);
+	        	   daos.getPeriodiciteDAO().create(p);
+	        	   //lignePeriod.requeteAjouterPeriodicite(period1);
 	        	   break;
 	           case 2:
 	        	   Scanner sc3 = new Scanner(System.in);
@@ -66,13 +79,19 @@ public class Menu {
 	        	   int idModif =sc3.nextInt();
 	        	   System.out.println("Quelle est la périodicité ?");
 	        	   String period2 = sc4.nextLine();
-	        	   lignePeriod.requeteModifierPeriodicite(idModif, period2);
+	        	   DAOFactory daos2 = DAOFactory.getDAOFactory(Persistance.MYSQL);
+	        	   Periodicite p2 = new Periodicite(1,period2);
+	        	   daos2.getPeriodiciteDAO().create(p2);
+	        	   //lignePeriod.requeteModifierPeriodicite(idModif, period2);
 	        	   break;
 	           case 3:
 	        	   Scanner sc5 = new Scanner(System.in);
 	        	   System.out.println("Quel est l'identifiant de la périodicité ?");
-	        	   int idDelete =sc5.nextInt();
-	        	   lignePeriod.requeteRetirerPeriodicite(idDelete);
+	        	   String idDelete =sc5.nextLine();
+	        	   DAOFactory daos3 = DAOFactory.getDAOFactory(Persistance.MYSQL);
+	        	   Periodicite p3 = new Periodicite(1,idDelete);
+	        	   daos3.getPeriodiciteDAO().create(p3);
+	        	   //lignePeriod.requeteRetirerPeriodicite(idDelete);
 	        	   break;
 	           }
 	           break;
