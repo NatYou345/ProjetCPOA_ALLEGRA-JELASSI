@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import Connexion_BDD.Connexion;
+import dao.MySQL.Connexion;
 
 public class Periodicite
 {

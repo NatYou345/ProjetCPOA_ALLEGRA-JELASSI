@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Connexion_BDD;
+package dao.MySQL;
 
 import java.sql.*;
 

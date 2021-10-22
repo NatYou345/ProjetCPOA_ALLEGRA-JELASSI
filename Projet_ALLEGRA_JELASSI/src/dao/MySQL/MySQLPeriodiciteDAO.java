@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Connexion_BDD.Connexion;
 import general_DAO.PeriodiciteDAO;
 import objets_metier.Periodicite;
 import objets_metier.Revue;

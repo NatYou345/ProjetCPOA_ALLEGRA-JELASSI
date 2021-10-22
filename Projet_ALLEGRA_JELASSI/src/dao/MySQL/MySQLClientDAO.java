@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Connexion_BDD.Connexion;
 import general_DAO.ClientDAO;
 import general_DAO.DAO;
 import objets_metier.Client;
@@ -38,7 +37,7 @@ public Client getById(int id) {
 		ResultSet res  = requete.executeQuery();
 		Client c = null;
 		if (res.next()) {
-			System.out.println("TrouvÃ©");
+			System.out.println("Trouvé");
 			c = new Client(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),	res.getString(5),res.getString(6),res.getString(7),	res.getString(8));
 
 		}
@@ -50,14 +49,14 @@ public Client getById(int id) {
 		return c;
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
 	}
 	return null;
 }
 
 @Override
 public boolean create(Client object) {
-	System.out.println("Crï¿½ation de client avec MYSQL Factory");
+	System.out.println("Creation de client avec MYSQL Factory");
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" insert into Client (nom, prenom, no_rue, voie, code_postal, ville, pays) values (?,?,?,?,?,?,?)"); 

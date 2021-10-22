@@ -1,4 +1,4 @@
-package tests;
+package normalisations;
 
 
 	public class NormalisationVoie {
@@ -10,17 +10,14 @@ package tests;
 
            case "boul" : case "boul." : case "bd" : 
                return "Boulevard";
-		case "av." : 
+           case "av." : 
                return "avenue";
-		case "faub." : case "fg" :
+           case "faub." : case "fg" :
                return "faubourg";
-		case "pl." : 
+           case "pl." : 
                return "place";
-		default: return NomVoie;
-       }
-       
-		
-	
-}
+           default: return NomVoie;
+       }	
+	}
 }
 

@@ -1,5 +1,7 @@
 package objets_metier;
 
+import java.util.Objects;
+
 public class Periodicite {
 
 	private int id_periodicite;
@@ -41,6 +43,23 @@ public class Periodicite {
 	@Override
 	public String toString() {
 		return "Periodicite [id_periodicite=" + id_periodicite + ", libelle=" + libelle + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_periodicite, libelle);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Periodicite other = (Periodicite) obj;
+		return id_periodicite == other.id_periodicite && Objects.equals(libelle, other.libelle);
 	}
 
 }

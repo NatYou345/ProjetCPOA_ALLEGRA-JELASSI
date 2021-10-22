@@ -3,6 +3,8 @@
  */
 package objets_metier;
 
+import java.util.Objects;
+
 public class Client {
 	
 	/**
@@ -160,6 +162,26 @@ public class Client {
 	 */
 	public void setPays(String pays) {
 		this.pays = pays;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(code_postal, id_client, no_rue, nom, pays, prenom, ville, voie);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Client other = (Client) obj;
+		return Objects.equals(code_postal, other.code_postal) && id_client == other.id_client
+				&& Objects.equals(no_rue, other.no_rue) && Objects.equals(nom, other.nom)
+				&& Objects.equals(pays, other.pays) && Objects.equals(prenom, other.prenom)
+				&& Objects.equals(ville, other.ville) && Objects.equals(voie, other.voie);
 	}
 
 }

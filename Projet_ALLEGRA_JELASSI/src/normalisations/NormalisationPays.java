@@ -1,12 +1,12 @@
-package tests;
+package normalisations;
 
 public class NormalisationPays {
-	public static String upperCaseFirst(String pays) {
+	public static String ajoutMajuscule(String pays) {
 	      char[] arr = pays.toCharArray();
 	      arr[0] = Character.toUpperCase(arr[0]);
 	      return new String(arr);
 	   }
-	public static String normalize (String result) {
+	public static String franciserPays (String result) {
 	   result = result.replaceAll("\\s+","");
 	    switch (result) {
 	    case "letzebuerg":
@@ -22,7 +22,7 @@ public class NormalisationPays {
 	    	result="Suisse";
 	           break;
 	       default:
-	           result=upperCaseFirst(result);
+	           result=ajoutMajuscule(result);
 	           break;
 	          
 	    }

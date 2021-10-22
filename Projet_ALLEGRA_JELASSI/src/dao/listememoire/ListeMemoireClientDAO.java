@@ -65,7 +65,7 @@ public class ListeMemoireClientDAO implements ClientDAO {
 
 		Client supprime;
 		
-		// Ne fonctionne que si l'objet m�tier est bien fait...
+		// Ne fonctionne que si l'objet metier est bien fait...
 		int idx = this.donnees.indexOf(objet);
 		if (idx == -1) {
 			throw new IllegalArgumentException("Tentative de suppression d'un objet inexistant");
@@ -77,7 +77,7 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	public Client getById(int id) {
-		// Ne fonctionne que si l'objet m�tier est bien fait...
+		// Ne fonctionne que si l'objet metier est bien fait...
 		int idx = this.donnees.indexOf(new Client(id, "test", "test", "test", "test", "test", "test", "test"));
 		if (idx == -1) {
 			throw new IllegalArgumentException("Aucun objet ne poss�de cet identifiant");

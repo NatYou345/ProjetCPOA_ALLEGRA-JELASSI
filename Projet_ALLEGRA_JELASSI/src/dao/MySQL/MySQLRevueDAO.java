@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Connexion_BDD.Connexion;
 import general_DAO.DAO;
 import general_DAO.RevueDAO;
 import objets_metier.Abonnement;

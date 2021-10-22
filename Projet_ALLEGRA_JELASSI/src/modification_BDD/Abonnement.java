@@ -7,9 +7,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
-import java.time.*;
 
-import Connexion_BDD.Connexion;
+import dao.MySQL.Connexion;
+
+import java.time.*;
 
 public class Abonnement
 {
@@ -45,7 +46,7 @@ public class Abonnement
 				laConnexion.close();
 			
 		}catch (SQLException sqle) {
-			System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+			System.out.println("Problème dans la requête ! " + sqle.getMessage());
 		}
 	}
 	
@@ -54,7 +55,7 @@ public class Abonnement
 
 		try {
 			Connection laConnexion = maConnexion.creeConnexion();
-			PreparedStatement requete = laConnexion.prepareStatement(" delete from Abonnemenr where id_abonnement =?");
+			PreparedStatement requete = laConnexion.prepareStatement(" delete from Abonnement where id_abonnement =?");
 			requete.setInt(1, id_abonnement);
 			
 			int nbAbonnement = requete.executeUpdate();
@@ -65,7 +66,7 @@ public class Abonnement
 				laConnexion.close();
 			
 		}catch (SQLException sqle) {
-			System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+			System.out.println("Problème dans la requête ! " + sqle.getMessage());
 		}
 	}
 	

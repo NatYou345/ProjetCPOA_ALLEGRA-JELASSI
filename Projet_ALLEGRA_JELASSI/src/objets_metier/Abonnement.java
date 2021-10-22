@@ -4,6 +4,7 @@
 package objets_metier;
 
 import java.util.Date;
+import java.util.Objects;
 import java.time.*;
 
 public class Abonnement {
@@ -109,6 +110,22 @@ public class Abonnement {
 	public String toString() {
 		return "Abonnement [id_abonnement=" + id_abonnement + ", date_debut=" + date_debut + ", date_fin=" + date_fin
 				+ ", id_client=" + id_client + ", id_revue=" + id_revue + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(date_debut, date_fin, id_abonnement, id_client, id_revue);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Abonnement other = (Abonnement) obj;
+		return Objects.equals(date_debut, other.date_debut) && Objects.equals(date_fin, other.date_fin)
+				&& id_abonnement == other.id_abonnement && id_client == other.id_client && id_revue == other.id_revue;
 	}
 
 }

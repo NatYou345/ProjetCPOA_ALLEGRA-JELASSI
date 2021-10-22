@@ -3,6 +3,7 @@
  */
 package objets_metier;
 
+import java.util.Objects;
 
 public class Revue {
 
@@ -118,6 +119,26 @@ public class Revue {
 	 */
 	public void setId_periodicite(int id_periodicite) {
 		this.id_periodicite = id_periodicite;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, id_periodicite, id_revue, tarif_numero, titre, visuel);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Revue other = (Revue) obj;
+		return Objects.equals(description, other.description) && id_periodicite == other.id_periodicite
+				&& id_revue == other.id_revue
+				&& Float.floatToIntBits(tarif_numero) == Float.floatToIntBits(other.tarif_numero)
+				&& Objects.equals(titre, other.titre) && Objects.equals(visuel, other.visuel);
 	}
 
 }
