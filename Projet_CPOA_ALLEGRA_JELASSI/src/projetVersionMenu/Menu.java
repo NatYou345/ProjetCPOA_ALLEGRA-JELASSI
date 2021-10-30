@@ -1,4 +1,4 @@
-package projet;
+package projetVersionMenu;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -7,9 +7,9 @@ import java.text.SimpleDateFormat;
 import factory.DAOFactory;
 import solutionPersistance.Persistance;
 import objets_metier.Periodicite;
+import objets_metier.Revue;
 import objets_metier.Client;
 import objets_metier.Abonnement;
-import objets_metier.Revue;
 
 /**
  * @author natha

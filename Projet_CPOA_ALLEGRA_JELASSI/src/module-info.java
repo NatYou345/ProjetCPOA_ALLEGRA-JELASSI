@@ -8,4 +8,10 @@
 module projet_CPOA_ALLEGRA_JELASSI {
 	requires java.sql;
 	requires org.junit.jupiter.api;
+	requires javafx.graphics;
+	requires org.junit.platform.engine;
+	requires javafx.fxml;
+	requires javafx.controls;
+	
+	opens application to javafx.graphics, javafx.fxml;
 }

@@ -121,7 +121,55 @@ public boolean delete(Periodicite object) {
 
 @Override
 public ArrayList<Periodicite> findAll() throws SQLException {
-	// TODO Auto-generated method stub
+	ArrayList<Periodicite> ListePeriodicite = new ArrayList<Periodicite>();
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select * from Periodicite"); 
+		ResultSet res  = requete.executeQuery();
+		Periodicite p = null;
+		while (res.next()) 
+		{
+			p = new Periodicite(res.getInt(1),res.getString(2));
+			ListePeriodicite.add(p);
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		
+		return ListePeriodicite;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
 	return null;
+
+}
+
+@Override
+public int getByLibelle(String libelle) {
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select * from Periodicite where libelle = ?"); 
+		requete.setString(1, libelle);
+		ResultSet res = requete.executeQuery();
+		int p = 0;
+		if (res.next()) {
+			
+		p = res.getInt(1);
+
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return p;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return -1;
 }
 }

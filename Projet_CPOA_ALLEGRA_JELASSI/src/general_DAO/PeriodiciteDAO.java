@@ -12,5 +12,7 @@ public interface PeriodiciteDAO extends DAO<Periodicite>{
 	
 	
 public ArrayList<Periodicite> findAll() throws SQLException;
+
+int getByLibelle(String libelle);
 		
 }

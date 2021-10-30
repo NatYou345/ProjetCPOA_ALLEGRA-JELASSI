@@ -48,14 +48,14 @@ public Revue getById(int id) {
 		return r;
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
 	}
 	return null;
 }
 
 @Override
 public boolean create(Revue object) {
-	System.out.println("CrÃ©ation de revue avec MYSQL Factory");
+	System.out.println("Création de revue avec MYSQL Factory");
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" insert into Revue (titre,description,tarif_numero,visuel,id_periodicite) values (?,?,?,?,?)"); 

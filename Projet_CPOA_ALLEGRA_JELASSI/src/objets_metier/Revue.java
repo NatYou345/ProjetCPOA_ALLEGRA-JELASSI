@@ -14,22 +14,18 @@ public class Revue {
 	private String visuel;
 	private int id_periodicite;
 	
-	public Revue(int i, String titre, String description, int tarif, String visuel, int periodicite) {
+	public Revue() {
+		
+	}
+	public Revue(int i, String titre, String description, float tarif_numero2, String visuel, int periodicite) {
 		this.id_revue = i;
 		this.titre = titre;
 		this.description = description;
-		this.tarif_numero = tarif;
+		this.tarif_numero = tarif_numero2;
 		this.visuel = visuel;
 		this.id_periodicite = periodicite;
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public String toString() {
