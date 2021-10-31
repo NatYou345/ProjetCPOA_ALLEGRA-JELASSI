@@ -2,33 +2,20 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NouvelleRevueController">
    <children>
       <Pane prefHeight="100.0" prefWidth="600.0">
          <children>
-            <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="251.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Accueil" />
-                <Menu mnemonicParsing="false" text="Sélection">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Aide">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Quitter">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
-            <Label layoutX="410.0" layoutY="42.0" prefHeight="17.0" prefWidth="148.0" text="Saisie d'une nouvelle revue" />
-            <Label layoutX="21.0" layoutY="42.0" prefHeight="17.0" prefWidth="83.0" text="RevuesOnLine" />
+            <Label layoutX="359.0" layoutY="42.0" prefHeight="25.0" prefWidth="209.0" text="Saisie d'une nouvelle revue">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="21.0" layoutY="42.0" prefHeight="28.0" prefWidth="140.0" text="RevuesOnLine">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
          </children>
       </Pane>
       <GridPane prefHeight="226.0" prefWidth="600.0">
@@ -49,7 +36,7 @@
             <Label text="Tarif : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label text="Périodicité : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <TextField fx:id="titre" maxWidth="-Infinity" prefHeight="26.0" prefWidth="290.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-            <TextField fx:id="description" maxWidth="-Infinity" prefHeight="70.0" prefWidth="415.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <TextField fx:id="description" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="70.0" prefWidth="415.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <TextField fx:id="tarif_numero" maxWidth="-Infinity" prefHeight="26.0" prefWidth="122.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label prefHeight="18.0" prefWidth="116.0" text="euros (€) au numéro" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <ComboBox fx:id="id_periodicite" maxWidth="-Infinity" prefHeight="26.0" prefWidth="152.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -62,7 +49,7 @@
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="59.0" prefWidth="600.0">
          <children>
-            <Label fx:id="lbl_saisie" text="Votre saisie : " />
+            <Label fx:id="lbl_saisie" />
          </children>
       </FlowPane>
    </children>

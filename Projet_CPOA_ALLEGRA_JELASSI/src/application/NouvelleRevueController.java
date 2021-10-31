@@ -9,7 +9,9 @@ import java.util.Iterator;
 
 import factory.DAOFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import objets_metier.Periodicite;
 import objets_metier.Revue;
@@ -33,9 +35,15 @@ private TextField tarif_numero;
 private TextField visuel;
 @FXML
 private ComboBox<String> id_periodicite;
+@FXML
+private Label lbl_saisie;
+@FXML
+private Button btn_creer;
 
 private Revue revue;
-
+private boolean titreSaisi = false;
+private boolean tarifSaisi = false;
+private boolean periodiciteSaisie = false;
 
 	public NouvelleRevueController() 
 	{
@@ -44,6 +52,7 @@ private Revue revue;
 	
 	public void initialize() throws SQLException 
 	{
+		btn_creer.setDisable(true);
 		SolutionPersistance solPers = new SolutionPersistance();
 		DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
 	   	ArrayList<Periodicite> listePeriodicite = daos.getPeriodiciteDAO().findAll();
@@ -54,6 +63,44 @@ private Revue revue;
 	   		id_periodicite.getItems().add(p.getLibelle());
 	   		
 	   	}
+	   	titre.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.titreSaisi = (NewValue != "");
+	   	if (titreSaisi && tarifSaisi && periodiciteSaisie) {
+	   		btn_creer.setDisable(false);
+	   		lbl_saisie.setText(titre.getText()+" ("+ tarif_numero.getText().trim() + " €)");
+	   	}
+	   	else 
+	   		{
+	   			lbl_saisie.setText("");
+	   			btn_creer.setDisable(true);
+	   		}
+	   			
+	   	
+	   		});
+	   	tarif_numero.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.tarifSaisi = (NewValue != "");
+	   	if (titreSaisi && tarifSaisi && periodiciteSaisie) {
+	   		btn_creer.setDisable(false);
+	   		lbl_saisie.setText(titre.getText()+" ("+ tarif_numero.getText().trim() + " €)");
+	   	}
+	   	else 
+	   		{
+	   			lbl_saisie.setText("");
+	   			btn_creer.setDisable(true);
+	   		}
+	   		});
+	   	id_periodicite.valueProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.periodiciteSaisie = (NewValue != "");
+	   	if (titreSaisi && tarifSaisi && periodiciteSaisie) {
+	   		btn_creer.setDisable(false);
+	   		lbl_saisie.setText(titre.getText()+" ("+ tarif_numero.getText().trim() + " €)");
+	   	}
+	   	else 
+	   		{
+	   			lbl_saisie.setText("");
+	   			btn_creer.setDisable(true);
+	   		}
+	   		});
 	}
 
 	public void setRevue(Revue revue) 

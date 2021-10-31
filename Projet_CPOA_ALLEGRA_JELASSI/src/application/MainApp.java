@@ -8,15 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import solutionPersistance.SolutionPersistance;
 
 public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		//SolutionPersistance solPers = new SolutionPersistance();
 		try {
-			URL fxmlURL=getClass().getResource("NouvelleRevue.fxml");
+			URL fxmlURL=getClass().getResource("Accueil.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
 			Scene scene = new Scene((VBox) root, 600, 400);

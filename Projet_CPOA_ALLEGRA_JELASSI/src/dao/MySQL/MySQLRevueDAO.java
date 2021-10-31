@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import general_DAO.DAO;
 import general_DAO.RevueDAO;
+import objets_metier.Periodicite;
 import objets_metier.Revue;
+import objets_metier.RevuePeriodicite;
 
 public class MySQLRevueDAO implements DAO<Revue>, RevueDAO{
 	private Connexion maConnexion;
@@ -126,8 +128,39 @@ public boolean delete(Revue object) {
 }
 
 @Override
-public ArrayList<Revue> findAll() throws SQLException {
-	// TODO Auto-generated method stub
+public ArrayList<RevuePeriodicite> findAllLibelle() throws SQLException {
+	ArrayList<RevuePeriodicite> ListeRevue = new ArrayList<RevuePeriodicite>();
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select id_revue, titre, description, tarif_numero, "+
+																		"Revue.id_periodicite, libelle from Revue,"+
+																		"Periodicite "+
+																		"where Revue.id_periodicite = Periodicite.id_periodicite");
+		ResultSet res  = requete.executeQuery();
+		RevuePeriodicite obj = null;
+		while (res.next()) 
+		{
+			obj = new RevuePeriodicite(res.getInt(1),res.getString(2),res.getString(3),String.valueOf(res.getFloat(4)),res.getInt(5),res.getString(6));
+			ListeRevue.add(obj);
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		
+		return ListeRevue;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
 	return null;
+
+}
+
+@Override
+public ArrayList<Revue> findAll() throws SQLException {
+	return null;
+
 }
 }

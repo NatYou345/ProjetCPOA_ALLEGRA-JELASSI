@@ -7,6 +7,7 @@ import java.util.List;
 
 import general_DAO.RevueDAO;
 import objets_metier.Revue;
+import objets_metier.RevuePeriodicite;
 
 public class ListeMemoireRevueDAO implements RevueDAO {
 
@@ -92,5 +93,10 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 		return null;
 	}
 	
+	@Override
+	public ArrayList<RevuePeriodicite> findAllLibelle() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

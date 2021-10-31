@@ -4,8 +4,9 @@ import java.text.ParseException;
 
 public class Projet {
 	
-	//public static void main(String[] args) throws ParseException {
+	public static void menu(String[] args) throws ParseException {
 
-		//Menu menuPrincipal = new Menu();
+		Menu menuPrincipal = new Menu();
 	}
+}
 

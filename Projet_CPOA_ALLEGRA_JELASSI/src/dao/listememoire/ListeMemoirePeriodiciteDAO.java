@@ -87,5 +87,11 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 	public ArrayList<Periodicite> findAll() {
 		return (ArrayList<Periodicite>) this.donnees;
 	}
+
+	@Override
+	public int getByLibelle(String libelle) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 

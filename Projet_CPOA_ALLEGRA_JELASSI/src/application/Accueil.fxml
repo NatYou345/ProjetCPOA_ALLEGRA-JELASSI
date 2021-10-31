@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="437.0" layoutY="44.0" prefHeight="25.0" prefWidth="77.0" text="Accueil">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="42.0" prefHeight="28.0" prefWidth="140.0" text="RevuesOnLine">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="303.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="259.0" layoutY="56.0" text="Bienvenue !">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="170.0" layoutY="93.0" text="Sélectionnez l'action de votre choix !">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnGestionClients" layoutX="99.0" layoutY="151.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="Gestion des clients" />
+            <Button fx:id="btnGestionRevues" layoutX="341.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#GestionRevues" prefHeight="40.0" prefWidth="160.0" text="Gestion des revues" />
+            <Button fx:id="btnGestionPeriodicites" layoutX="99.0" layoutY="209.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="Gestion des périodicités" />
+            <Button fx:id="btnGestionAbonnements" layoutX="341.0" layoutY="209.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="Gestion des abonnements" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

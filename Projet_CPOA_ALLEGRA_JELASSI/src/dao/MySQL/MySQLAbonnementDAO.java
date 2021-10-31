@@ -78,7 +78,7 @@ public boolean create(Abonnement object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
 	}
 	return false;
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GestionRevuesController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="680.0" layoutY="38.0" prefHeight="25.0" prefWidth="140.0" text="Gestion des revues">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="42.0" prefHeight="28.0" prefWidth="140.0" text="RevuesOnLine">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane prefHeight="600.0" prefWidth="900.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="100.0" prefWidth="450.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="548.3999885559082" minHeight="10.0" prefHeight="213.00003051757812" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Liste des revues" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="listeRevues" prefHeight="126.0" prefWidth="290.0" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+              <columns>
+                <TableColumn fx:id="listeRevues_titre" prefWidth="260.0" text="Titre" />
+                <TableColumn fx:id="listeRevues_tarif" minWidth="0.0" prefWidth="70.0" text="Tarif" />
+                  <TableColumn fx:id="listeRevues_periodicite" minWidth="0.0" prefWidth="120.0" text="Périodicité" />
+              </columns>
+            </TableView>
+            <Label text="Détail de la revue" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Abonnements liés à la revue" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <GridPane GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Titre : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Description : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label text="Tarif : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label text="titreRevue" GridPane.columnIndex="1" />
+                  <Label text="descriptionRevue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="tarifRevue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Périodicité : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Label text="periodiciteRevue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+              <columns>
+                <TableColumn prefWidth="98.40002286434174" text="Date de début" />
+                <TableColumn prefWidth="126.39997100830078" text="Date de fin" />
+                  <TableColumn prefWidth="102.40008544921875" text="Nom" />
+                  <TableColumn prefWidth="122.4000244140625" text="Prénom" />
+              </columns>
+            </TableView>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <children>
+                  <Button layoutX="225.0" layoutY="13.0" mnemonicParsing="false" text="Ajouter" />
+                  <Button layoutX="287.0" layoutY="13.0" mnemonicParsing="false" text="Modifier" />
+                  <Button layoutX="358.0" layoutY="13.0" mnemonicParsing="false" text="Supprimer" />
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+   </children>
+</VBox>

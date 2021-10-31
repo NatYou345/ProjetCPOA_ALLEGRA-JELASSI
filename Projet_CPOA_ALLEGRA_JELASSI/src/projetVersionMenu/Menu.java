@@ -241,7 +241,9 @@ public class Menu {
 	           System.out.println("Choix incorrect ! Veuillez saisir un nombre entre 1 et 4.");
 	           break;
 	   }
-		
+	sc0.close();
+	sc1.close();
+	
 		
 		
 	}
