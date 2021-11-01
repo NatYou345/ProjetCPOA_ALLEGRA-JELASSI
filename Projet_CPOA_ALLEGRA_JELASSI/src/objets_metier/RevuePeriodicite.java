@@ -3,13 +3,10 @@ package objets_metier;
 
 import java.util.Objects;
 
-import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.TableColumn;
 
 
 public class RevuePeriodicite {
@@ -23,8 +20,17 @@ public class RevuePeriodicite {
 	private StringProperty libelle_periodicite;
 	
 	public RevuePeriodicite() {
+		this.id_revue = new SimpleIntegerProperty(-1);
+		this.titre = new SimpleStringProperty("");
+		this.description = new SimpleStringProperty("");
+		this.tarif_numero = new SimpleStringProperty("");
+		//this.visuel = visuel;
+		this.id_periodicite = new SimpleIntegerProperty(-1);
+		this.libelle_periodicite = new SimpleStringProperty("");
 		
 	}
+	
+	
 	public RevuePeriodicite(int i, String titre, String description, String tarif_numero, int periodicite, String libelle) {
 		this.id_revue = new SimpleIntegerProperty(i);
 		this.titre = new SimpleStringProperty(titre);

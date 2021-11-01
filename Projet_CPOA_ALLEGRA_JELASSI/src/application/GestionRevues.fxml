@@ -76,11 +76,11 @@
                      </font>
                   </Label>
                   <Label text="Tarif : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Label text="titreRevue" GridPane.columnIndex="1" />
-                  <Label text="descriptionRevue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="tarifRevue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl_revueTitre" text="titreRevue" GridPane.columnIndex="1" />
+                  <Label fx:id="lbl_revueDescription" text="descriptionRevue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lbl_revueTarif" text="tarifRevue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Périodicité : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                  <Label text="periodiciteRevue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl_revuePeriodicite" text="periodiciteRevue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
@@ -93,9 +93,9 @@
             </TableView>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
-                  <Button layoutX="225.0" layoutY="13.0" mnemonicParsing="false" text="Ajouter" />
-                  <Button layoutX="287.0" layoutY="13.0" mnemonicParsing="false" text="Modifier" />
-                  <Button layoutX="358.0" layoutY="13.0" mnemonicParsing="false" text="Supprimer" />
+                  <Button fx:id="btn_ajouter" layoutX="225.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#handleNouvelleRevue" text="Ajouter" />
+                  <Button fx:id="btn_modifier" layoutX="287.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#handleModifierRevue" text="Modifier" />
+                  <Button fx:id="btn_supprimer" layoutX="358.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#supprimerRevue" text="Supprimer" />
                </children>
             </Pane>
          </children>

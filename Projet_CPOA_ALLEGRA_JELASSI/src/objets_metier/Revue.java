@@ -5,6 +5,8 @@ package objets_metier;
 
 import java.util.Objects;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Revue {
 
 	private int id_revue;
@@ -16,6 +18,11 @@ public class Revue {
 	
 	public Revue() {
 		
+	}
+	
+	public Revue (int i) 
+	{
+		this.id_revue = i;
 	}
 	public Revue(int i, String titre, String description, float tarif_numero2, String visuel, int periodicite) {
 		this.id_revue = i;

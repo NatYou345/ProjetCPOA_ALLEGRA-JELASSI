@@ -13,8 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import objets_metier.Periodicite;
 import objets_metier.Revue;
+import objets_metier.RevuePeriodicite;
 import solutionPersistance.SolutionPersistance;
 
 /**
@@ -40,7 +42,10 @@ private Label lbl_saisie;
 @FXML
 private Button btn_creer;
 
+private Stage dialogStage;
+private boolean okClicked = false;
 private Revue revue;
+private RevuePeriodicite revueP;
 private boolean titreSaisi = false;
 private boolean tarifSaisi = false;
 private boolean periodiciteSaisie = false;
@@ -108,10 +113,31 @@ private boolean periodiciteSaisie = false;
 		this.revue = revue;
 		
 		titre.setText(revue.getTitre());
-		titre.setText(revue.getDescription());
-
+		description.setText(revue.getDescription());
+		tarif_numero.setText(String.valueOf(revue.getTarif_numero()));
+		//id_periodicite.setValue(revue.getId_periodicite());
+	
+	}
+	
+	public void setRevueP(RevuePeriodicite revueP) 
+	{
+		this.revueP = revueP;
 		
-		
+		titre.setText(revueP.getTitre());
+		description.setText(revueP.getDescription());
+		tarif_numero.setText(String.valueOf(revueP.getTarif_numero()));
+		id_periodicite.setValue(revueP.getlibelle_periodicite());
+	
+	}
+	
+	public void setDialogStage (Stage dialogStage) 
+	{
+		this.dialogStage = dialogStage;
+	}
+	
+	public boolean isOkClicked() 
+	{
+		return okClicked;
 	}
 	
 	@FXML
@@ -126,6 +152,7 @@ private boolean periodiciteSaisie = false;
 		int resIDPeriodicite = daos.getPeriodiciteDAO().getByLibelle(id_periodicite.getValue());
 		revue.setId_periodicite(resIDPeriodicite);	
 	   	daos.getRevueDAO().create(revue);
+	   	okClicked = true;
 	}
 
 }
