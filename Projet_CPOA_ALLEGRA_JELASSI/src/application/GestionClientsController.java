@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -8,10 +9,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import factory.DAOFactory;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -26,6 +30,7 @@ import objets_metier.Abonnement;
 import objets_metier.AbonnementAff;
 import objets_metier.Client;
 import objets_metier.ClientAff;
+import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
 import solutionPersistance.SolutionPersistance;
 
@@ -337,6 +342,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	        NouvelAbonnementController controller = loader.getController();
 
 	        controller.setDialogStage(dialogStage);
+	        System.out.println("ID client avant nouvel abo : "+clientSelected.getId_client());
 	        AbonnementAff aboAff = new AbonnementAff(clientSelected.getId_client());
 	        
 	        controller.setAbonnement(aboAff);
@@ -423,6 +429,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 			SolutionPersistance solPers = new SolutionPersistance();
 			DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
 			Abonnement obj = new Abonnement(this.abonnementSelected.id_abonnementProperty().getValue().intValue());
+			System.out.println("Abo à supprimer : " + this.abonnementSelected.id_abonnementProperty());
 			daos.getAbonnementDAO().delete(obj);
 			listeAbos.getItems().remove(SelectedIndex);
 			

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import objets_metier.Client;
 import objets_metier.ClientAff;
+import objets_metier.Revue;
 
 public interface ClientDAO extends DAO<Client>{
 	

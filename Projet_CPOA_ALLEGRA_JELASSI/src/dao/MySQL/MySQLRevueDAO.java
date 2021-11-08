@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import general_DAO.DAO;
 import general_DAO.RevueDAO;
+import objets_metier.Periodicite;
 import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
 

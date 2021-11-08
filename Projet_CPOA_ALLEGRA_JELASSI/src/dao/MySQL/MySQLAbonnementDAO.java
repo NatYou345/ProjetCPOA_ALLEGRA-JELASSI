@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dateConv.DateConv;
 import general_DAO.AbonnementDAO;
 import general_DAO.DAO;
 import objets_metier.Abonnement;
@@ -96,7 +97,7 @@ public boolean update(Abonnement object) {
 		
 		java.sql.Date date1 = new java.sql.Date(object.getDate_debut().getTime());
 		requete.setDate(1, date1);
-		java.sql.Date date2 = new java.sql.Date(object.getDate_debut().getTime());
+		java.sql.Date date2 = new java.sql.Date(object.getDate_fin().getTime());
 		requete.setDate(2, date2);
 		requete.setInt(3, object.getId_client());
 		requete.setInt(4, object.getId_revue());

@@ -4,17 +4,24 @@
 package application;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+
 import factory.DAOFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import objets_metier.Abonnement;
 import objets_metier.AbonnementAff;
+import objets_metier.Client;
+import objets_metier.ClientAff;
 import solutionPersistance.SolutionPersistance;
 
 /**
