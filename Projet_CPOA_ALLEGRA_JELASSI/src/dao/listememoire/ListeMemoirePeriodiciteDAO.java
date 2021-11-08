@@ -5,6 +5,7 @@ import java.util.List;
 
 import general_DAO.PeriodiciteDAO;
 import objets_metier.Periodicite;
+import objets_metier.RevuePeriodicite;
 
 public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 
@@ -92,6 +93,12 @@ public class ListeMemoirePeriodiciteDAO implements PeriodiciteDAO {
 	public int getByLibelle(String libelle) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public RevuePeriodicite getRPById(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

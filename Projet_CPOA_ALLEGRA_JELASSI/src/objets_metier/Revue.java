@@ -5,8 +5,6 @@ package objets_metier;
 
 import java.util.Objects;
 
-import javafx.beans.property.SimpleIntegerProperty;
-
 public class Revue {
 
 	private int id_revue;

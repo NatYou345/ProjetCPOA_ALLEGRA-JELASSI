@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import general_DAO.DAO;
 import general_DAO.RevueDAO;
-import objets_metier.Periodicite;
 import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
 
@@ -56,6 +55,34 @@ public Revue getById(int id) {
 }
 
 @Override
+public RevuePeriodicite getRPById(int id) {
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select id_revue, titre, description, tarif_numero, "+
+				"Revue.id_periodicite, libelle " + 
+				"from Revue, Periodicite " +
+				"where Revue.id_periodicite = Periodicite.id_periodicite and id_revue = ?"); 
+		requete.setInt(1, id);
+		ResultSet res  = requete.executeQuery();
+		RevuePeriodicite r = null;
+		if (res.next()) {
+			
+		r = new RevuePeriodicite(res.getInt(1),res.getString(2),res.getString(3),res.getString(4), res.getInt(5), res.getString(6));
+
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return r;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête getRPByID ! " + sqle.getMessage());
+	}
+	return null;
+}
+@Override
 public boolean create(Revue object) {
 	System.out.println("Création de revue avec MYSQL Factory");
 	try {
@@ -91,6 +118,7 @@ public boolean update(Revue object) {
 		requete.setFloat(3, object.getTarif_numero());
 		requete.setString(4, object.getVisuel());
 		requete.setInt(5,object.getId_periodicite() );
+		requete.setInt(6,object.getId_revue() );
 		
 		int nbRevue = requete.executeUpdate();
 		

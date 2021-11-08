@@ -98,5 +98,11 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public RevuePeriodicite getRPById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

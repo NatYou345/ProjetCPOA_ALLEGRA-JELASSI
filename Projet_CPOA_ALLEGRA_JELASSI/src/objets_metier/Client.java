@@ -30,6 +30,24 @@ public class Client {
 		this.pays = pays;
 	}
 
+	public Client(String nom, String prenom, String no_rue, String voie, String code_postal,
+			String ville, String pays) {
+		super();
+		
+		this.nom = nom;
+		this.prenom = prenom;
+		this.no_rue = no_rue;
+		this.voie = voie;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.pays = pays;
+	}
+
+	public Client(int id_client) {
+		super();
+		this.id_client = id_client;
+	}
+
 	private int id_client;
 	private String nom;
 	private String prenom;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import general_DAO.PeriodiciteDAO;
 import objets_metier.Periodicite;
+import objets_metier.RevuePeriodicite;
 
 public class MySQLPeriodiciteDAO implements PeriodiciteDAO {
 	private Connexion maConnexion;
@@ -171,5 +172,11 @@ public int getByLibelle(String libelle) {
 		System.out.println("Problème dans la requête ! " + sqle.getMessage());
 	}
 	return -1;
+}
+
+@Override
+public RevuePeriodicite getRPById(int id) {
+	// TODO Auto-generated method stub
+	return null;
 }
 }

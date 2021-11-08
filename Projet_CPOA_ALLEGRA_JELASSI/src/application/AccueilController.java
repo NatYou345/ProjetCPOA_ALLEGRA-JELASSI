@@ -44,7 +44,26 @@ private Button btnGestionAbonnements;
 				e.printStackTrace();
 				}
 		}
-	
+
+	@FXML
+	public void GestionClients() 
+	{
+		Stage secondStage = new Stage();
+		try {
+			URL fxmlURL=getClass().getResource("GestionClients.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Node root = fxmlLoader.load();
+			Scene scene = new Scene((VBox) root, 1400, 700);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			secondStage.setScene(scene);
+			secondStage.setTitle("Gestion des clients");
+			secondStage.show();
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+				}
+		}
+
 	
 }	
 

@@ -23,16 +23,21 @@ public class Abonnement {
 		this.id_client = id_client;
 		this.id_revue = id_revue;
 	}
+	
+	public Abonnement(Date date_deb, Date date_fin, int id_client, int id_revue) {
+		
+		this.date_debut = date_deb;
+		this.date_fin = date_fin;
+		this.id_client = id_client;
+		this.id_revue = id_revue;
+	}
 	public Abonnement(int id) {
 		this.id_abonnement = id;
 	
 	}
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+	public Abonnement() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**

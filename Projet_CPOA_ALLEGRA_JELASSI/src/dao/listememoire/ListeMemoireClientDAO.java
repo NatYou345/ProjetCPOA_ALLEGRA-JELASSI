@@ -8,6 +8,8 @@ import java.util.List;
 
 import general_DAO.ClientDAO;
 import objets_metier.Client;
+import objets_metier.ClientAff;
+import objets_metier.RevuePeriodicite;
 
 public class ListeMemoireClientDAO implements ClientDAO {
 
@@ -87,7 +89,18 @@ public class ListeMemoireClientDAO implements ClientDAO {
 	}
 
 	@Override
+	public ArrayList<ClientAff> findAllAff() {
+		return null;     //(ArrayList<ClientAff>) this.donnees;
+	}
+	
+	@Override
 	public ArrayList<Client> findAll() {
-		return (ArrayList<Client>) this.donnees;
+		return null;     //(ArrayList<ClientAff>) this.donnees;
+	}
+
+	@Override
+	public RevuePeriodicite getRPById(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

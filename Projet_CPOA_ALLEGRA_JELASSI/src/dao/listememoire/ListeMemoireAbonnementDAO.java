@@ -1,11 +1,15 @@
 package dao.listememoire;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import general_DAO.AbonnementDAO;
 import objets_metier.Abonnement;
+import objets_metier.AbonnementAff;
+import objets_metier.ClientAff;
+import objets_metier.RevuePeriodicite;
 
 public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 
@@ -63,7 +67,7 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 			
 			this.donnees.set(idx, objet);
 		}
-		
+	
 		return true;
 	}
 
@@ -83,5 +87,23 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 	
 	public ArrayList<Abonnement> findAll() {
 		return (ArrayList<Abonnement>) this.donnees;
+	}
+
+	@Override
+	public ArrayList<AbonnementAff> findAllDetails() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public ArrayList<AbonnementAff> findAllDetailsByClient(ClientAff client) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RevuePeriodicite getRPById(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

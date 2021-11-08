@@ -1,7 +1,6 @@
 package application;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -22,7 +20,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import objets_metier.Periodicite;
 import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
 import solutionPersistance.SolutionPersistance;
@@ -72,7 +69,7 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 	{
 		initListeRevues();
 	   	afficherRevueDetails(null);
-	   	listeRevues.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> afficherRevueDetails(newValue));
+	   	listeRevues.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> afficherRevueDetails(newValue));
 	   	
 	}
 	public void initListeRevues() throws SQLException {
@@ -84,7 +81,7 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 		listeRevues_periodicite.setCellValueFactory(cellData -> cellData.getValue().libelle_periodiciteProperty());
 	   	ArrayList<RevuePeriodicite> listeRevuePeriodicite = daos.getRevueDAO().findAllLibelle();
 	   	Iterator<RevuePeriodicite> itr = listeRevuePeriodicite.iterator();
-	   	while (itr.hasNext()) 
+	   	while (itr.hasNext())
 	   	{
 	   		RevuePeriodicite obj = itr.next();
 	   		listeRevuesPeriodicite.add(obj);
@@ -94,16 +91,15 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 	
 	private void afficherRevueDetails(RevuePeriodicite revue) {
 		this.revueSelected = revue;
+		
 	    if (revue != null) {
-
 	        lbl_revueTitre.setText(revue.getTitre());
 	        lbl_revueDescription.setText(revue.getDescription());
 	        lbl_revueTarif.setText(revue.getTarif_numero());
 	        lbl_revuePeriodicite.setText(revue.getlibelle_periodicite());
 
 	    } else {
-
-	    	lbl_revueTitre.setText("");
+			lbl_revueTitre.setText("");
 	        lbl_revueDescription.setText("");
 	        lbl_revueTarif.setText("");
 	        lbl_revuePeriodicite.setText("");
@@ -116,11 +112,11 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 		int SelectedIndex = listeRevues.getSelectionModel().getSelectedIndex();
 		if (SelectedIndex >=0) 
 		{
-			listeRevues.getItems().remove(SelectedIndex);
 			SolutionPersistance solPers = new SolutionPersistance();
 			DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
 			Revue obj = new Revue(this.revueSelected.getId_revue());
 			daos.getRevueDAO().delete(obj);
+			listeRevues.getItems().remove(SelectedIndex);
 			
 		}
 		else 
@@ -139,7 +135,7 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 		try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("NouvelleRevue.fxml"));
+	        loader.setLocation(MainApp.class.getResource("ModifierRevue.fxml"));
 	        VBox vbox = (VBox) loader.load();
 
 	        // Create the dialog Stage.
@@ -151,7 +147,37 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 	        dialogStage.setScene(scene);
 
 	        // Set the person into the controller.
-	        NouvelleRevueController controller = loader.getController();
+	        ModifierRevueController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+	        controller.setRevueP(revueP);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+
+	}
+	public boolean RevueCreerDialogue(RevuePeriodicite revueP) 
+	{
+		try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("NouvelleRevue.fxml"));
+	        VBox vbox = (VBox) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Création d'une revue");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        //dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(vbox);
+	        dialogStage.setScene(scene);
+
+	       NouvelleRevueController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
 	        controller.setRevueP(revueP);
 
@@ -170,25 +196,26 @@ public ObservableList<RevuePeriodicite> getListeRevues()
 	private void handleNouvelleRevue() throws SQLException 
 	{
 		RevuePeriodicite tempRP = new RevuePeriodicite();
-		boolean okClicked = RevueEditDialogue(tempRP);
+		boolean okClicked = RevueCreerDialogue(tempRP);
 		if (okClicked) 
 		{
-			//listeRevuesPeriodicite.add(tempRP);
 			initListeRevues();
 		}
 	}
 	
 	@FXML
-	private void handleModifierRevue() {
+	private void handleModifierRevue() throws SQLException {
 	    RevuePeriodicite selectedRevue = listeRevues.getSelectionModel().getSelectedItem();
 	    if (selectedRevue != null) {
+	    	
 	        boolean okClicked = RevueEditDialogue(selectedRevue);
 	        if (okClicked) {
 	            afficherRevueDetails(selectedRevue);
+	            initListeRevues();
 	        }
 
 	    } else {
-	        // Nothing selected.
+	        
 	        Alert alert = new Alert(AlertType.WARNING);
 	        alert.setTitle("Aucune revue sélectionnée");
 	        alert.setHeaderText("Aucune revue sélectionnée");

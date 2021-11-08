@@ -13,9 +13,11 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	
-	
+
 	@Override
 	public void start(Stage primaryStage) {
+	
+				
 		this.primaryStage = primaryStage;
 		try {
 			URL fxmlURL=getClass().getResource("Accueil.fxml");
@@ -35,4 +37,5 @@ public class MainApp extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }

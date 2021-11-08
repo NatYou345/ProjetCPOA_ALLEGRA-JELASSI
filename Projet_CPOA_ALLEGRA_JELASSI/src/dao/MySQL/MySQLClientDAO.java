@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import general_DAO.ClientDAO;
 import general_DAO.DAO;
 import objets_metier.Client;
+import objets_metier.ClientAff;
+import objets_metier.RevuePeriodicite;
 
 public class MySQLClientDAO implements DAO<Client>, ClientDAO{
 private Connexion maConnexion;
@@ -77,7 +79,7 @@ public boolean create(Client object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
@@ -127,13 +129,47 @@ public boolean delete(Client object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
 
 @Override
+public ArrayList<ClientAff> findAllAff() throws SQLException {
+	ArrayList<ClientAff> ListeClient = new ArrayList<ClientAff>();
+	
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement("select id_client, nom, prenom, no_rue, voie, code_postal, ville, pays from Client");
+		ResultSet res  = requete.executeQuery();
+		ClientAff obj = null;
+		while (res.next()) 
+		{
+			obj = new ClientAff(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getString(6),res.getString(7),res.getString(8));
+			ListeClient.add(obj);
+			
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return ListeClient;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return null;
+}
+
+@Override
 public ArrayList<Client> findAll() throws SQLException {
+	
+	return null;
+}
+
+@Override
+public RevuePeriodicite getRPById(int id) {
 	// TODO Auto-generated method stub
 	return null;
 }
