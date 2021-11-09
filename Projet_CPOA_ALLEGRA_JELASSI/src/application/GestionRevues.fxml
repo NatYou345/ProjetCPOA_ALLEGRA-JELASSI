@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GestionRevuesController">
+<VBox prefHeight="722.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GestionRevuesController">
    <children>
-      <Pane prefHeight="100.0" prefWidth="600.0">
+      <Pane prefHeight="100.0" prefWidth="914.0">
          <children>
-            <Label layoutX="680.0" layoutY="38.0" prefHeight="25.0" prefWidth="140.0" text="Gestion des revues">
+            <Label layoutX="678.0" layoutY="24.0" prefHeight="53.0" prefWidth="334.0" text="Gestion des revues">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="42.0" prefHeight="28.0" prefWidth="140.0" text="RevuesOnLine">
+            <Label layoutX="14.0" layoutY="16.0" prefHeight="70.0" prefWidth="343.0" text="RevuesOnLine">
                <font>
-                  <Font name="System Bold" size="19.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
             </Label>
          </children>
@@ -37,7 +45,7 @@
          <children>
             <Label text="Liste des revues" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <TableView fx:id="listeRevues" prefHeight="126.0" prefWidth="290.0" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
@@ -49,7 +57,7 @@
             </TableView>
             <Label text="Détail de la revue" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label text="Abonnements liés à la revue" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
@@ -83,12 +91,13 @@
                   <Label fx:id="lbl_revuePeriodicite" text="periodiciteRevue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <TableView fx:id="listeAbos" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
               <columns>
-                <TableColumn prefWidth="98.40002286434174" text="Date de début" />
-                <TableColumn prefWidth="126.39997100830078" text="Date de fin" />
-                  <TableColumn prefWidth="102.40008544921875" text="Nom" />
-                  <TableColumn prefWidth="122.4000244140625" text="Prénom" />
+                <TableColumn fx:id="listeAbos_date_debut" prefWidth="98.40002286434174" text="Date de début" />
+                <TableColumn fx:id="listeAbos_date_fin" prefWidth="126.39997100830078" text="Date de fin" />
+                  <TableColumn fx:id="listeAbos_nom" prefWidth="102.40008544921875" text="Nom" />
+                  <TableColumn fx:id="listeAbos_prenom" prefWidth="122.4000244140625" text="Prénom" />
+                  <TableColumn fx:id="listeAbos_ville" prefWidth="122.4000244140625" text="Ville" />
               </columns>
             </TableView>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
@@ -98,6 +107,13 @@
                   <Button fx:id="btn_supprimer" layoutX="358.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#supprimerRevue" text="Supprimer" />
                </children>
             </Pane>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+              <buttons>
+                <Button fx:id="btn_ajouterAbo" mnemonicParsing="false" onMouseClicked="#handleNouvelAbonnement" text="Nouvel abonnement" />
+                  <Button fx:id="btn_modifierAbo" layoutX="530.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#handleModifierAbonnement" text="Modifier" />
+                  <Button fx:id="btn_supprimerAbo" layoutX="445.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#supprimerAbonnement" text="Supprimer" />
+              </buttons>
+            </ButtonBar>
          </children>
       </GridPane>
    </children>

@@ -180,33 +180,31 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 		listeAbos_titre.setCellValueFactory(cellData -> cellData.getValue().getRevuePeriodicite().titreProperty());
 		listeAbos_periodicite.setCellValueFactory(cellData -> cellData.getValue().getRevuePeriodicite().libelle_periodiciteProperty());
 
-		
 		//listeAbos_id_abo.setCellValueFactory(cellData -> String.valueOf(cellData.getValue().getId_abonnementProperty()));
 
 		listeAbos_date_debut.setCellValueFactory(cellData -> cellData.getValue().date_debutProperty());
 		listeAbos_date_fin.setCellValueFactory(cellData -> cellData.getValue().date_finProperty());
 		
 	   	ArrayList<AbonnementAff> listeAbonnementAff = daos.getAbonnementDAO().findAllDetailsByClient(clientAff);
-	   	System.out.println("Abos : " + listeAbonnementAff);
+	   	//System.out.println("listeAbonnementAff : " + listeAbonnementAff);
 	   	Iterator<AbonnementAff> itr = listeAbonnementAff.iterator();
 	   	
 	   	while (itr.hasNext())
 	   	{
 	   		AbonnementAff obj = itr.next();
-	   		System.out.println("Abos : " + obj);
 	   		// Recherche detail revue
-	   		
 	   		RevuePeriodicite revueP = daos.getRevueDAO().getRPById(obj.id_revueProperty().getValue().intValue());
-	   		
 	   		obj.setRevuePeriodicite(revueP);
+	   		
 	   		listeAbonnementsAff.add(obj);
 	   	}
 	   	listeAbos.setItems(getListeAbonnements());
+	   	//System.out.println("listeAbos: " + getListeAbonnements());
 	}
 	
 	
 	@FXML
-	private void supprimerClient() 
+	private void supprimerClient() throws ParseException 
 	{
 		int SelectedIndex = listeClients.getSelectionModel().getSelectedIndex();
 		if (SelectedIndex >=0) 
@@ -214,8 +212,20 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 			SolutionPersistance solPers = new SolutionPersistance();
 			DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
 			Client obj = new Client(this.clientSelected.getId_client());
-			daos.getClientDAO().delete(obj);
-			listeClients.getItems().remove(SelectedIndex);
+			
+			System.out.println("Abo existant : "+ this.clientSelected.getId_client() + " " + daos.getAbonnementDAO().getByClientId(this.clientSelected.getId_client()));
+			if(daos.getAbonnementDAO().getByClientId(this.clientSelected.getId_client()) == 0 ) {
+			 	daos.getClientDAO().delete(obj);
+			 	listeClients.getItems().remove(SelectedIndex);
+			}
+			else {
+				Alert alert = new Alert(AlertType.WARNING);
+			    alert.setTitle("Suppression impossible !");
+			    alert.setHeaderText("Il y a des abonnements avec ce client");
+			    alert.setContentText("Sélectionnez un autre client dans la liste.");
+			    alert.showAndWait();
+			}
+			
 			
 		}
 		else 
@@ -400,13 +410,13 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	
 	@FXML
 	private void handleModifierAbonnement() throws SQLException, ParseException {
-	    ClientAff selectedClient = listeClients.getSelectionModel().getSelectedItem();
-	    if (selectedClient != null) {
+	    AbonnementAff selectedAbonnement = listeAbos.getSelectionModel().getSelectedItem();
+	    if (selectedAbonnement != null) {
 	    	
 	        boolean okClicked = AbonnementEditDialogue(abonnementSelected);
 	        if (okClicked) {
-	            afficherClientDetails(selectedClient);
-	            initListeClients();
+	            //afficherClientDetails(selectedClient);
+	        	initListeAbonnement(clientSelected);
 	        }
 
 	    } else {

@@ -34,7 +34,7 @@ private Button btnGestionAbonnements;
 			URL fxmlURL=getClass().getResource("GestionRevues.fxml");
 			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
 			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 900, 700);
+			Scene scene = new Scene((VBox) root, 1200, 700);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			secondStage.setScene(scene);
 			secondStage.setTitle("Gestion des revues");

@@ -103,4 +103,10 @@ public class ListeMemoireClientDAO implements ClientDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ClientAff getCAById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

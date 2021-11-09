@@ -60,6 +60,67 @@ public Abonnement getById(int id) {
 }
 
 @Override
+public int getByRevueId(int id) {
+	
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select * from Abonnement where id_revue = ?"); 
+		requete.setInt(1, id);
+		ResultSet res  = requete.executeQuery();
+		
+		int nb = 0;
+		if (res.next()) {
+			nb = 1;
+		}
+		else {
+			nb = 0;
+		}
+		
+		if (requete != null)
+			requete.close();
+		
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return nb;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return -1;
+}
+
+@Override
+public int getByClientId(int id) {
+	
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select * from Abonnement where id_client = ?"); 
+		requete.setInt(1, id);
+		ResultSet res  = requete.executeQuery();
+		
+		int nb = 0;
+		if (res.next()) {
+			nb = 1;
+		}
+		else {
+			nb = 0;
+		}
+		
+		if (requete != null)
+			requete.close();
+		
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return nb;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return -1;
+}
+@Override
 public boolean create(Abonnement object) {
 	System.out.println("Creation d'abonnement avec MYSQL Factory");
 	try {
@@ -230,11 +291,42 @@ public ArrayList<AbonnementAff> findAllDetailsByClient(ClientAff cli) throws SQL
 	}
 	return null;
 }
+@Override
+public ArrayList<AbonnementAff> findAllDetailsByRevue(RevuePeriodicite revue) throws SQLException {
+	
+	ArrayList<AbonnementAff> listeAbo = new ArrayList<AbonnementAff>();
+	
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select * from Abonnement where id_revue = ?"); 
+		requete.setInt(1, revue.getId_revue());
+		ResultSet res  = requete.executeQuery();
+		AbonnementAff obj = null;
+		
+		while (res.next()) 
+		{
+			obj = new AbonnementAff(res.getInt(1),res.getDate(2).toLocalDate(),res.getDate(3).toLocalDate(), res.getInt(4), res.getInt(5));
+			listeAbo.add(obj);
+		}
+
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return listeAbo;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return null;
+}
 
 @Override
 public RevuePeriodicite getRPById(int id) {
 	// TODO Auto-generated method stub
 	return null;
 }
+
 
 }

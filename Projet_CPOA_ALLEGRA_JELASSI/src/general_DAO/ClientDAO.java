@@ -14,6 +14,7 @@ public interface ClientDAO extends DAO<Client>{
 	
 	public ArrayList<Client> findAll() throws SQLException;
 	public ArrayList<ClientAff> findAllAff() throws SQLException;
+	public ClientAff getCAById(int id);
 
 
 }

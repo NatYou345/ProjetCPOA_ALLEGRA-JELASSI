@@ -118,5 +118,10 @@ public class AbonnementAff {
 	public void setRevuePeriodicite(RevuePeriodicite revuePeriodicite) {
 		this.revuePeriodicite = revuePeriodicite;
 	}
-	
+	public ClientAff getClientAff() {
+		return clientAff;
+	}
+	public void setClientAff(ClientAff clientAff) {
+		this.clientAff = clientAff;
+	}
 }

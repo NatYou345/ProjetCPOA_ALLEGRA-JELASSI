@@ -192,4 +192,6 @@ public ArrayList<Revue> findAll() throws SQLException {
 	return null;
 
 }
+
+
 }

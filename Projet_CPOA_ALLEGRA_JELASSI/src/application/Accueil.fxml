@@ -10,14 +10,14 @@
    <children>
       <Pane prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Label layoutX="437.0" layoutY="44.0" prefHeight="25.0" prefWidth="77.0" text="Accueil">
+            <Label layoutX="435.0" layoutY="23.0" prefHeight="35.0" prefWidth="130.0" text="Accueil">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="42.0" prefHeight="28.0" prefWidth="140.0" text="RevuesOnLine">
+            <Label layoutX="8.0" layoutY="15.0" prefHeight="70.0" prefWidth="343.0" text="RevuesOnLine">
                <font>
-                  <Font name="System Bold" size="19.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
             </Label>
          </children>

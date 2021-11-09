@@ -106,4 +106,22 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int getByRevueId(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getByClientId(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ArrayList<AbonnementAff> findAllDetailsByRevue(RevuePeriodicite revue) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

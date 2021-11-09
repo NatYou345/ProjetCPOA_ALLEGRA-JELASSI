@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import objets_metier.Abonnement;
 import objets_metier.AbonnementAff;
 import objets_metier.ClientAff;
+import objets_metier.RevuePeriodicite;
 
 public interface AbonnementDAO extends DAO<Abonnement> {
 
@@ -17,4 +18,10 @@ public interface AbonnementDAO extends DAO<Abonnement> {
 	public ArrayList<AbonnementAff> findAllDetails() throws SQLException;
 
 	public ArrayList<AbonnementAff> findAllDetailsByClient(ClientAff cli) throws SQLException;
+
+	public int getByRevueId(int id);
+
+	public int getByClientId(int id);
+
+	public ArrayList<AbonnementAff> findAllDetailsByRevue(RevuePeriodicite revue) throws SQLException;
 }

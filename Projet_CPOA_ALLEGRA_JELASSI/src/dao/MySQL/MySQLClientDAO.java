@@ -57,6 +57,32 @@ public Client getById(int id) {
 }
 
 @Override
+public ClientAff getCAById(int id) {
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement("select * from Client where id_client = ?"); 
+		requete.setInt(1, id);
+		ResultSet res  = requete.executeQuery();
+		ClientAff obj = null;
+		if (res.next()) {
+			
+		obj = new ClientAff(res.getInt(1),res.getString(2),res.getString(3),res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return obj;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête getCAByID ! " + sqle.getMessage());
+	}
+	return null;
+}
+
+@Override
 public boolean create(Client object) {
 	System.out.println("Creation de client avec MYSQL Factory");
 	try {
