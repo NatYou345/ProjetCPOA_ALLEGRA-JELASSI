@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import objets_metier.Periodicite;
 import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
-import solutionPersistance.SolutionPersistance;
 
 /**
  * @author natha
@@ -58,9 +57,10 @@ private boolean periodiciteSaisie = false;
 	public void initialize() throws SQLException 
 	{
 		btn_creer.setDisable(true);
-		SolutionPersistance solPers = new SolutionPersistance();
-		DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
-	   	ArrayList<Periodicite> listePeriodicite = daos.getPeriodiciteDAO().findAll();
+		//SolutionPersistance solPers = new SolutionPersistance();
+		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());	   	
+		ArrayList<Periodicite> listePeriodicite = daos.getPeriodiciteDAO().findAll();
 	   	Iterator<Periodicite> itr = listePeriodicite.iterator();
 	   	while (itr.hasNext()) 
 	   	{
@@ -143,8 +143,9 @@ private boolean periodiciteSaisie = false;
 	@FXML
 	private void handleCreer() 
 	{
-		SolutionPersistance solPers = new SolutionPersistance();
-		DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		//SolutionPersistance solPers = new SolutionPersistance();
+		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
 		revue = new Revue();
 		revue.setTitre(titre.getText());
 		revue.setDescription(description.getText());
@@ -153,6 +154,7 @@ private boolean periodiciteSaisie = false;
 		revue.setId_periodicite(resIDPeriodicite);	
 	   	daos.getRevueDAO().create(revue);
 	   	okClicked = true;
+	   	this.dialogStage.close();
 	}
 
 }

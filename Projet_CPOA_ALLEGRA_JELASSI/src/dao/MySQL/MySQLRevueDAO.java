@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import general_DAO.DAO;
 import general_DAO.RevueDAO;
-import objets_metier.Periodicite;
 import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
 
@@ -85,7 +84,7 @@ public RevuePeriodicite getRPById(int id) {
 }
 @Override
 public boolean create(Revue object) {
-	System.out.println("Création de revue avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" insert into Revue (titre,description,tarif_numero,visuel,id_periodicite) values (?,?,?,?,?)"); 
@@ -103,14 +102,14 @@ public boolean create(Revue object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Probeme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
 
 @Override
 public boolean update(Revue object) {
-	System.out.println("Update de revue avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" update Revue SET titre =?,description=?,tarif_numero=?,visuel=?,id_periodicite=? where id_revue=?"); 
@@ -129,14 +128,14 @@ public boolean update(Revue object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
 
 @Override
 public boolean delete(Revue object) {
-	System.out.println("Delete de la revue avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" delete from Revue where id_revue =?");
@@ -151,7 +150,7 @@ public boolean delete(Revue object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
@@ -189,9 +188,80 @@ public ArrayList<RevuePeriodicite> findAllLibelle() throws SQLException {
 
 @Override
 public ArrayList<Revue> findAll() throws SQLException {
+	ArrayList<Revue> ListeRevue = new ArrayList<Revue>();
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select id_revue, titre from Revue"); 
+		ResultSet res  = requete.executeQuery();
+		Revue obj = null;
+		while (res.next()) 
+		{
+			obj = new Revue(res.getInt(1),res.getString(2));
+			ListeRevue.add(obj);
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		
+		return ListeRevue;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
 	return null;
 
 }
 
+@Override
+public int getByLibelle(String libelle) {
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select * from Revue where titre = ?"); 
+		requete.setString(1, libelle);
+		ResultSet res = requete.executeQuery();
+		int p = 0;
+		if (res.next()) {
+			
+		p = res.getInt(1);
+
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return p;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return -1;
+}
+
+@Override
+public String getTitreByID(int id) {
+	try {
+		Connection laConnexion = maConnexion.creeConnexion();
+		PreparedStatement requete = laConnexion.prepareStatement(" select titre from Revue where id_revue = ?"); 
+		requete.setInt(1, id);
+		ResultSet res = requete.executeQuery();
+		String t = "";
+		if (res.next()) {	
+			t = res.getString(1);
+		}
+		if (requete != null)
+			requete.close();
+		if (laConnexion != null)
+			laConnexion.close();
+		
+		return t;
+		
+	}catch (SQLException sqle) {
+		System.out.println("Problème dans la requête ! " + sqle.getMessage());
+	}
+	return "";
+}
 
 }

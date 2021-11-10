@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import dateConv.DateConv;
 import general_DAO.AbonnementDAO;
 import general_DAO.DAO;
 import objets_metier.Abonnement;
@@ -122,7 +120,7 @@ public int getByClientId(int id) {
 }
 @Override
 public boolean create(Abonnement object) {
-	System.out.println("Creation d'abonnement avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" insert into Abonnement ( date_debut, date_fin, id_client, id_revue) Values (?,?,?,?)"); 
@@ -151,7 +149,7 @@ public boolean create(Abonnement object) {
 
 @Override
 public boolean update(Abonnement object) {
-	System.out.println("Update d'abonnement avec MYSQL Factory");
+
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" update Abonnement SET date_debut =?, date_fin =?, id_client =?, id_revue =? where id_abonnement =?"); 
@@ -179,7 +177,7 @@ public boolean update(Abonnement object) {
 
 @Override
 public boolean delete(Abonnement object) {
-	System.out.println("Delete d'un abonnement avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" delete from Abonnement where id_abonnement =?");

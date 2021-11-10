@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="464.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NouvelAbonnementController">
+<VBox prefHeight="464.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NouvelAbonnementdeRevueController">
    <children>
       <Pane prefHeight="100.0" prefWidth="600.0">
          <children>
@@ -41,14 +41,14 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Numéro client : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-            <Label text="Revue : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Label text="Numéro revue : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+            <Label text="Numéro client : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label text="Date début : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label text="Date fin : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Label fx:id="id_client" text="idclient" GridPane.columnIndex="1" />
-            <ComboBox fx:id="revue_titre" prefHeight="25.0" prefWidth="287.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <DatePicker fx:id="date_debut" prefHeight="25.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker fx:id="date_fin" prefHeight="25.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="id_revue" text="idrevue" GridPane.columnIndex="1" />
+            <TextField fx:id="id_client" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="date_debut" prefHeight="25.0" prefWidth="292.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="date_fin" prefHeight="25.0" prefWidth="292.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <ButtonBar prefHeight="49.0" prefWidth="827.0">

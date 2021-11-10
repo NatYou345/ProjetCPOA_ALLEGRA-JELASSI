@@ -104,5 +104,17 @@ public class ListeMemoireRevueDAO implements RevueDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int getByLibelle(String libelle) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getTitreByID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

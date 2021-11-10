@@ -4,15 +4,11 @@
 package objets_metier;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class AbonnementAff {
 	
@@ -39,7 +35,7 @@ public class AbonnementAff {
 	}
 	
 	public AbonnementAff() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 	
 	public void setId_abonnement(int id_abonnement) {
@@ -74,15 +70,15 @@ public class AbonnementAff {
 		return date_fin;
 	}
 	
-	public void setId_revuee(int id_revue) {
-		this.id_revue.set(id_revue);
+	public void setId_revue(int id_revue) {
+		this.id_revue = new SimpleIntegerProperty(id_revue);
 	}
-	
 
 	public IntegerProperty id_revueProperty() 
 	{
 		return id_revue;
 	}
+	
 	public void setId_client(int id_client) {
 		this.id_client.set(id_client);
 	}
@@ -91,6 +87,7 @@ public class AbonnementAff {
 	{
 		return id_client;
 	}
+	
 	@Override
 	public String toString() {
 		return "Abonnement [id_abonnement=" + id_abonnement + ", date_debut=" + date_debut + ", date_fin=" + date_fin

@@ -13,4 +13,6 @@ public interface RevueDAO extends DAO <Revue>{
 	public ArrayList<Revue> findAll() throws SQLException;
 	public ArrayList<RevuePeriodicite> findAllLibelle() throws SQLException;
 	public RevuePeriodicite getRPById(int id);
+	public int getByLibelle(String libelle);
+	public String getTitreByID(int id);
 }

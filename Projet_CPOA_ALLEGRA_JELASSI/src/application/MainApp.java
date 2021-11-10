@@ -8,11 +8,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import solutionPersistance.Persistance;
 
 public class MainApp extends Application {
 
 	private Stage primaryStage;
-	
+	public static Persistance solPers;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -36,6 +37,14 @@ public class MainApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static Persistance getSolPers() {
+		return solPers;
+	}
+
+	public static void setSolPers(Persistance pers) {
+		solPers = pers;
 	}
 	
 }

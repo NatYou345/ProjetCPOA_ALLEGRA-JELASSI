@@ -4,19 +4,14 @@
 package application;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import factory.DAOFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import objets_metier.Client;
 import objets_metier.ClientAff;
-import solutionPersistance.SolutionPersistance;
 
 /**
  * @author natha
@@ -123,13 +118,14 @@ private boolean villeSaisie = false;
 	@FXML
 	private void handleCreer() 
 	{
-		SolutionPersistance solPers = new SolutionPersistance();
-		DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		//SolutionPersistance solPers = new SolutionPersistance();
+		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
 		client = new Client(nom.getText(),prenom.getText(),num.getText(),voie.getText(),cp.getText(),ville.getText(),pays.getText());
-		System.out.println("Client à créer: "+ client.toString());
 
 	   	daos.getClientDAO().create(client);
 	   	okClicked = true;
+	   	this.dialogStage.close();
 	}
 
 }

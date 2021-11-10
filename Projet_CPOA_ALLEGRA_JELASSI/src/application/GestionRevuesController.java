@@ -1,7 +1,6 @@
 package application;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -13,7 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -27,11 +25,8 @@ import javafx.stage.Stage;
 import objets_metier.Abonnement;
 import objets_metier.AbonnementAff;
 import objets_metier.ClientAff;
-import objets_metier.Periodicite;
 import objets_metier.Revue;
 import objets_metier.RevuePeriodicite;
-import solutionPersistance.SolutionPersistance;
-
 
 
 public class GestionRevuesController {
@@ -122,8 +117,9 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	}
 	public void initListeRevues() throws SQLException {
 		listeRevues.getItems().clear();
-		SolutionPersistance solPers = new SolutionPersistance();
-		DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		//SolutionPersistance solPers = new SolutionPersistance();
+		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
 		listeRevues_titre.setCellValueFactory(cellData -> cellData.getValue().titreProperty());
 		listeRevues_tarif.setCellValueFactory(cellData -> cellData.getValue().tarif_numeroProperty());
 		listeRevues_periodicite.setCellValueFactory(cellData -> cellData.getValue().libelle_periodiciteProperty());
@@ -140,9 +136,9 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 
 	public void initListeAbonnement(RevuePeriodicite revueP) throws SQLException, ParseException {
 		listeAbos.getItems().clear();
-		SolutionPersistance solPers = new SolutionPersistance();
-		DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
-		
+		//SolutionPersistance solPers = new SolutionPersistance();
+		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());		
 		listeAbos_nom.setCellValueFactory(cellData -> cellData.getValue().getClientAff().nomProperty());
 		listeAbos_prenom.setCellValueFactory(cellData -> cellData.getValue().getClientAff().prenomProperty());
 		listeAbos_ville.setCellValueFactory(cellData -> cellData.getValue().getClientAff().villeProperty());
@@ -150,7 +146,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 		listeAbos_date_fin.setCellValueFactory(cellData -> cellData.getValue().date_finProperty());
 		
 	   	ArrayList<AbonnementAff> listeAbonnementAff = daos.getAbonnementDAO().findAllDetailsByRevue(revueP);
-	   	//System.out.println("listeAbonnementAff : " + listeAbonnementAff);
+
 	   	Iterator<AbonnementAff> itr = listeAbonnementAff.iterator();
 	   	
 	   	while (itr.hasNext())
@@ -163,7 +159,6 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	   		listeAbonnementsAff.add(obj);
 	   	}
 	   	listeAbos.setItems(getListeAbonnements());
-	   	//System.out.println("listeAbos: " + getListeAbonnements());
 	}
 
 	
@@ -192,11 +187,11 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 		int SelectedIndex = listeRevues.getSelectionModel().getSelectedIndex();
 		if (SelectedIndex >=0) 
 		{
-			SolutionPersistance solPers = new SolutionPersistance();
-			DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+			//SolutionPersistance solPers = new SolutionPersistance();
+			//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+			DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());			
 			Revue obj = new Revue(this.revueSelected.getId_revue());
 			
-			System.out.println("Abo existant : "+ this.revueSelected.getId_revue() + " " + daos.getAbonnementDAO().getByRevueId(this.revueSelected.getId_revue()));
 			if(daos.getAbonnementDAO().getByRevueId(this.revueSelected.getId_revue()) == 0 ) {
 			 	daos.getRevueDAO().delete(obj);
 			 	listeRevues.getItems().remove(SelectedIndex);
@@ -232,7 +227,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Modification d'une revue");
-	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initModality(Modality.APPLICATION_MODAL);
 	        //dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(vbox);
 	        dialogStage.setScene(scene);
@@ -263,7 +258,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Création d'une revue");
-	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initModality(Modality.APPLICATION_MODAL);
 	        //dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(vbox);
 	        dialogStage.setScene(scene);
@@ -317,28 +312,28 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	}
 	
 	
-	public boolean AbonnementCreerDialogue(Abonnement abonnement) 
+	public boolean AbonnementCreerDialogue() 
 	{
 		try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("NouvelAbonnement.fxml"));
+	        loader.setLocation(MainApp.class.getResource("NouvelAbonnementdeRevue.fxml"));
 	        VBox vbox = (VBox) loader.load();
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("Création d'un abonnement");
-	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.setTitle("Création d'un abonnement pour une revue");
+	        dialogStage.initModality(Modality.APPLICATION_MODAL);
 	        //dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(vbox);
 	        dialogStage.setScene(scene);
 
-	        NouvelAbonnementController controller = loader.getController();
+	        NouvelAbonnementdeRevueController controller = loader.getController();
 
 	        controller.setDialogStage(dialogStage);
-	        System.out.println("ID client avant nouvel abo : "+revueSelected.getId_revue());
-	        AbonnementAff aboAff = new AbonnementAff(revueSelected.getId_revue());
 	        
+	        AbonnementAff aboAff = new AbonnementAff(-1);
+	        aboAff.setId_revue(revueSelected.getId_revue());
 	        controller.setAbonnement(aboAff);
 	        dialogStage.showAndWait();
 
@@ -353,18 +348,18 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 		try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("ModifierAbonnement.fxml"));
+	        loader.setLocation(MainApp.class.getResource("ModifierAbonnementdeRevue.fxml"));
 	        VBox vbox = (VBox) loader.load();
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("Modification d'un abonnement");
-	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.setTitle("Modification d'un abonnement pour une revue");
+	        dialogStage.initModality(Modality.APPLICATION_MODAL);
 	        //dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(vbox);
 	        dialogStage.setScene(scene);
 
-	        ModifierAbonnementController controller = loader.getController();
+	        ModifierAbonnementdeRevueController controller = loader.getController();
 
 	        controller.setDialogStage(dialogStage);
 	        
@@ -384,11 +379,19 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	@FXML
 	private void handleNouvelAbonnement() throws SQLException, ParseException 
 	{
-		Abonnement tempA = new Abonnement();
-		boolean okClicked = AbonnementCreerDialogue(tempA);
-		if (okClicked) 
-		{
-			initListeAbonnement(revueSelected);
+		if(revueSelected != null) {
+			boolean okClicked = AbonnementCreerDialogue();
+			if (okClicked) 
+			{
+				initListeAbonnement(revueSelected);
+			}
+			}
+			else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Aucune revue sélectionnée");
+				alert.setHeaderText("Aucune revue sélectionnée");
+				alert.setContentText("Sélectionnez une revue dans la liste.");
+				alert.showAndWait();
 		}
 	}
 	
@@ -420,10 +423,10 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 		int SelectedIndex = listeAbos.getSelectionModel().getSelectedIndex();
 		if (SelectedIndex >=0) 
 		{
-			SolutionPersistance solPers = new SolutionPersistance();
-			DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+			//SolutionPersistance solPers = new SolutionPersistance();
+			//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+			DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());		
 			Abonnement obj = new Abonnement(this.abonnementSelected.id_abonnementProperty().getValue().intValue());
-			System.out.println("Abo à supprimer : " + this.abonnementSelected.id_abonnementProperty());
 			daos.getAbonnementDAO().delete(obj);
 			listeAbos.getItems().remove(SelectedIndex);
 			

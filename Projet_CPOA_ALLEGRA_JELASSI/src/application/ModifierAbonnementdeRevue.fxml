@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,13 +9,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="464.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ModifierAbonnementController">
+<VBox prefHeight="464.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ModifierAbonnementdeRevueController">
    <children>
       <Pane prefHeight="106.0" prefWidth="827.0">
          <children>
-            <Label layoutX="76.0" layoutY="36.0" text="RevuesOnLine" />
-            <Label layoutX="609.0" layoutY="36.0" prefHeight="17.0" prefWidth="159.0" text="Modifier un abonnement" />
+            <Label layoutX="76.0" layoutY="36.0" text="RevuesOnLine">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font></Label>
+            <Label layoutX="502.0" layoutY="36.0" prefHeight="35.0" prefWidth="297.0" text="Modifier un abonnement">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
          </children>
       </Pane>
       <GridPane>
@@ -33,16 +39,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Numéro client : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Label text="Revue : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label text="Revue : " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Label text="Numéro client : " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label text="Date début : " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label text="Date fin : " GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Label fx:id="id_client" text="idclient" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="id_abonnement : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+            <Label text="Numéro abonnement : " GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
             <Label fx:id="id_abo" text="Label" GridPane.columnIndex="1" />
-            <ComboBox fx:id="revue_titre" prefHeight="25.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker fx:id="date_debut" prefHeight="25.0" prefWidth="284.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker fx:id="date_fin" prefHeight="25.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="date_debut" prefHeight="25.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="date_fin" prefHeight="25.0" prefWidth="302.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="id_revue" prefHeight="17.0" prefWidth="279.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="id_client" prefHeight="17.0" prefWidth="98.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <ButtonBar prefHeight="49.0" prefWidth="827.0">

@@ -14,5 +14,6 @@ public interface DAO<T> {
 	public abstract boolean update (T object);
 	public abstract boolean delete (T object);
 	public abstract RevuePeriodicite getRPById(int id);
+
 	
 }

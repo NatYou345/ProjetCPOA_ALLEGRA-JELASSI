@@ -38,8 +38,8 @@
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="240.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="548.3999885559082" minHeight="10.0" prefHeight="259.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="548.3999885559082" minHeight="10.0" prefHeight="219.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -48,7 +48,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TableView fx:id="listeClients" prefHeight="126.0" prefWidth="290.0" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+            <TableView fx:id="tv_listeClients" prefHeight="126.0" prefWidth="290.0" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
               <columns>
                 <TableColumn fx:id="listeClients_nom" prefWidth="178.0" text="Nom" />
                 <TableColumn fx:id="listeClients_prenom" minWidth="0.0" prefWidth="129.0" text="Prenom" />
@@ -60,7 +60,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="245.0" text="Abonnements liés au client" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label prefHeight="27.0" prefWidth="343.0" text="Revues auxquelles le client est abonné" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Label>
@@ -127,19 +127,24 @@
                   <TableColumn fx:id="listeAbos_periodicite" prefWidth="122.4000244140625" text="Periodicite" />
                 <TableColumn fx:id="listeAbos_date_debut" prefWidth="98.40002286434174" text="Date de début" />
                 <TableColumn fx:id="listeAbos_date_fin" prefWidth="126.39997100830078" text="Date de fin" />
-                  <TableColumn fx:id="listeAbos_id_abo" prefWidth="102.40008544921875" text="id_Abo" />
+                  <TableColumn fx:id="listeAbos_id_abo" prefWidth="102.40008544921875" text="id_Abo" visible="false" />
               </columns>
             </TableView>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="btn_ajouter" layoutX="225.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#handleNouveauClient" text="Ajouter" />
-                  <Button fx:id="btn_modifier" layoutX="287.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#handleModifierClient" text="Modifier" />
-                  <Button fx:id="btn_supprimer" alignment="CENTER_RIGHT" layoutX="358.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#supprimerClient" text="Supprimer" />
+                  <ButtonBar layoutX="22.0" layoutY="1.0" prefHeight="40.0" prefWidth="533.0">
+                    <buttons>
+                        <Button fx:id="btn_ajouter" mnemonicParsing="false" onMouseClicked="#handleNouveauClient" text="Ajouter" />
+                        <Button fx:id="btn_modifier" mnemonicParsing="false" onMouseClicked="#handleModifierClient" text="Modifier" />
+                        <Button fx:id="btn_supprimer" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#supprimerClient" prefHeight="25.0" prefWidth="111.0" text="Supprimer" />
+                        <Button fx:id="btn_import" mnemonicParsing="false" onMouseClicked="#importerFichier" text="Import" />
+                    </buttons>
+                  </ButtonBar>
                </children>
             </Pane>
             <Pane prefHeight="50.0" prefWidth="393.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <children>
-                  <ButtonBar layoutX="54.0" layoutY="5.0" prefHeight="40.0" prefWidth="533.0">
+                  <ButtonBar layoutX="54.0" layoutY="5.0" prefHeight="40.0" prefWidth="505.0">
                     <buttons>
                       <Button fx:id="btn_ajouterAbo" mnemonicParsing="false" onMouseClicked="#handleNouvelAbonnement" text="Nouvel abonnement" />
                         <Button fx:id="btn_modifierAbo" layoutX="468.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleModifierAbonnement" text="Modifier " />

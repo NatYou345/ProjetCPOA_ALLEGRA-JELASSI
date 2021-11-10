@@ -8,7 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import solutionPersistance.Persistance;
 
 public class AccueilController {
 
@@ -19,11 +21,12 @@ private Button btnGestionRevues;
 @FXML
 private Button btnGestionPeriodicites;
 @FXML
-private Button btnGestionAbonnements;
+private Button btnGestionOptions;
+
 
 	
 	public AccueilController() {
-		// TODO Auto-generated constructor stub
+		application.MainApp.setSolPers(Persistance.MYSQL);
 	}
 	
 	@FXML
@@ -64,6 +67,51 @@ private Button btnGestionAbonnements;
 				}
 		}
 
+	@FXML
+	
+	public void GestionOptions() 
+	{
+		//Stage secondStage = new Stage();
+		try {
+			/*
+			URL fxmlURL=getClass().getResource("GestionOptions.fxml");
+			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+			Node root = fxmlLoader.load();
+			Scene scene = new Scene((VBox) root, 540, 300);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			secondStage.setScene(scene);
+			secondStage.setTitle("Gestion des options");
+			GestionOptionsController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+			secondStage.show();
+			
+			*/
+			
+			FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("GestionOptions.fxml"));
+	        VBox vbox = (VBox) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Gestion des options");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        //dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(vbox);
+	        dialogStage.setScene(scene);
+
+	        GestionOptionsController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+	        
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	        
+	        
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+				}
+		}
 	
 }	
 

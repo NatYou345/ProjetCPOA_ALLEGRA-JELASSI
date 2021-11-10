@@ -48,14 +48,14 @@ public Periodicite getById(int id) {
 		return p;
 		
 	}catch (SQLException sqle) {
-		System.out.println("Probl�me dans la requ�te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return null;
 }
 
 @Override
 public boolean create(Periodicite object) {
-	System.out.println("Cr�ation de la p�riodicit� avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" insert into Periodicite (libelle) values (?)"); 
@@ -69,14 +69,14 @@ public boolean create(Periodicite object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Probl�me dans la requ�te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
 
 @Override
 public boolean update(Periodicite object) {
-	System.out.println("Update de la p�riodicit� avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" update Periodicite SET libelle =? where id_periodicite=?"); 
@@ -92,14 +92,14 @@ public boolean update(Periodicite object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Probl�me dans la requ�te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	return false;
 }
 
 @Override
 public boolean delete(Periodicite object) {
-	System.out.println("Delete de la p�riodicit� avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" delete from Periodicite where id_periodicite =?");
@@ -114,7 +114,7 @@ public boolean delete(Periodicite object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Probl�me dans la requ�te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la requete ! " + sqle.getMessage());
 	}
 	
 	return false;

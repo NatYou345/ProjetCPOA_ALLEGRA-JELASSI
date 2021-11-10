@@ -58,8 +58,6 @@ public class Client {
 	private String pays;
 	
 	
-	
-	
 	@Override
 	public String toString() {
 		return "Client [id_client=" + id_client + ", nom=" + nom + ", prenom=" + prenom + ", no_rue=" + no_rue

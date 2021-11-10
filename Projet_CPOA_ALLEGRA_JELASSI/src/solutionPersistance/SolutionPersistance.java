@@ -4,9 +4,9 @@ public class SolutionPersistance {
 
 	Persistance Pers;
 	
-	public SolutionPersistance() {
+	public SolutionPersistance(Persistance pers) {
 		
-		Pers = Persistance.MYSQL;
+		Pers = pers; 	//Persistance.MYSQL;
 	}
 	
 	

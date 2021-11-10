@@ -36,8 +36,8 @@
             </Label>
             <Button fx:id="btnGestionClients" layoutX="99.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#GestionClients" prefHeight="40.0" prefWidth="160.0" text="Gestion des clients" />
             <Button fx:id="btnGestionRevues" layoutX="341.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#GestionRevues" prefHeight="40.0" prefWidth="160.0" text="Gestion des revues" />
-            <Button fx:id="btnGestionPeriodicites" layoutX="99.0" layoutY="209.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="Gestion des périodicités" />
-            <Button fx:id="btnGestionAbonnements" layoutX="341.0" layoutY="209.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="Gestion des abonnements" />
+            <Button fx:id="btnGestionPeriodicites" disable="true" layoutX="99.0" layoutY="209.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="Gestion des périodicités" />
+            <Button fx:id="btnGestionOptions" layoutX="341.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#GestionOptions" prefHeight="40.0" prefWidth="160.0" text="Options" />
          </children>
       </Pane>
    </children>

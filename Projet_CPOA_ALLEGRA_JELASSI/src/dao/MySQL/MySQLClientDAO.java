@@ -39,7 +39,6 @@ public Client getById(int id) {
 		ResultSet res  = requete.executeQuery();
 		Client c = null;
 		if (res.next()) {
-			System.out.println("Trouvé");
 			c = new Client(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),	res.getString(5),res.getString(6),res.getString(7),	res.getString(8));
 
 		}
@@ -84,7 +83,7 @@ public ClientAff getCAById(int id) {
 
 @Override
 public boolean create(Client object) {
-	System.out.println("Creation de client avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" insert into Client (nom, prenom, no_rue, voie, code_postal, ville, pays) values (?,?,?,?,?,?,?)"); 
@@ -112,7 +111,7 @@ public boolean create(Client object) {
 
 @Override
 public boolean update(Client object) {
-	System.out.println("Update du client avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" update Client SET nom =?, prenom =?, no_rue =?, voie =?, code_postal =?, ville =?, pays =? where id_client=?"); 
@@ -133,14 +132,14 @@ public boolean update(Client object) {
 			laConnexion.close();
 		
 	}catch (SQLException sqle) {
-		System.out.println("Problï¿½me dans la requï¿½te ! " + sqle.getMessage());
+		System.out.println("Probleme dans la reauete ! " + sqle.getMessage());
 	}
 	return false;
 }
 
 @Override
 public boolean delete(Client object) {
-	System.out.println("Delete du client avec MYSQL Factory");
+	
 	try {
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" delete from Client where id_client =?");
@@ -161,7 +160,7 @@ public boolean delete(Client object) {
 }
 
 @Override
-public ArrayList<ClientAff> findAllAff() throws SQLException {
+public ArrayList<ClientAff> findAllAff() {
 	ArrayList<ClientAff> ListeClient = new ArrayList<ClientAff>();
 	
 	try {
@@ -189,7 +188,7 @@ public ArrayList<ClientAff> findAllAff() throws SQLException {
 }
 
 @Override
-public ArrayList<Client> findAll() throws SQLException {
+public ArrayList<Client> findAll() {
 	
 	return null;
 }

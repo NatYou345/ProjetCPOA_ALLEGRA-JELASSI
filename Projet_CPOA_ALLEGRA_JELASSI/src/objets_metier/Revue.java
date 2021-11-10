@@ -5,7 +5,6 @@ package objets_metier;
 
 import java.util.Objects;
 
-import javafx.beans.property.SimpleIntegerProperty;
 
 public class Revue {
 
@@ -33,6 +32,11 @@ public class Revue {
 		this.id_periodicite = periodicite;
 	}
 
+
+	public Revue(int id_revue, String titre) {
+		this.id_revue = id_revue;
+		this.titre = titre;
+	}
 
 	@Override
 	public String toString() {
