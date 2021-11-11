@@ -49,7 +49,12 @@ private Client client;
 private ClientAff clientA;
 private boolean nomSaisi = false;
 private boolean prenomSaisi = false;
+private boolean numSaisi = false;
+private boolean voieSaisie = false;
+private boolean cpSaisi = false;
 private boolean villeSaisie = false;
+private boolean paysSaisi = false;
+
 
 
 	public NouveauClientController() 
@@ -63,7 +68,7 @@ private boolean villeSaisie = false;
 
 	   	nom.textProperty().addListener((Observable,OldValue,NewValue)->
 	   	{this.nomSaisi = (NewValue != "");
-	   	if (nomSaisi && prenomSaisi && villeSaisie) {
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
 	   		btn_creer.setDisable(false);
 	   	}
 	   	else 
@@ -74,7 +79,7 @@ private boolean villeSaisie = false;
 	   		});
 	   	prenom.textProperty().addListener((Observable,OldValue,NewValue)->
 	   	{this.prenomSaisi = (NewValue != "");
-	   	if (nomSaisi && prenomSaisi && villeSaisie) {
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
 	   		btn_creer.setDisable(false);
 	   	}
 	   	else 
@@ -82,9 +87,56 @@ private boolean villeSaisie = false;
 	   		btn_creer.setDisable(true);
 	   		}
 	   		});
+
+	   	num.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.numSaisi = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_creer.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_creer.setDisable(true);
+	   		}
+	   			
+	   		});
+	   	
+	   	voie.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.voieSaisie = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_creer.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_creer.setDisable(true);
+	   		}
+	   		});
+	   	
+	   	cp.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.cpSaisi = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_creer.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_creer.setDisable(true);
+	   		}
+	   			
+	   		});
+	   	
 	   	ville.textProperty().addListener((Observable,OldValue,NewValue)->
 	   	{this.villeSaisie = (NewValue != "");
-	   	if (nomSaisi && prenomSaisi && villeSaisie) {
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_creer.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_creer.setDisable(true);
+	   		}
+	   		});
+	   	
+	   	pays.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.paysSaisi = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
 	   		btn_creer.setDisable(false);
 	   	}
 	   	else 
@@ -118,9 +170,9 @@ private boolean villeSaisie = false;
 	@FXML
 	private void handleCreer() 
 	{
-		//SolutionPersistance solPers = new SolutionPersistance();
-		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
+		
 		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
+		
 		client = new Client(nom.getText(),prenom.getText(),num.getText(),voie.getText(),cp.getText(),ville.getText(),pays.getText());
 
 	   	daos.getClientDAO().create(client);

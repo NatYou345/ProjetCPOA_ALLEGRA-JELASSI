@@ -58,21 +58,16 @@ public Abonnement getById(int id) {
 }
 
 @Override
-public int getByRevueId(int id) {
+public boolean getByRevueId(int id) {
 	
 	try {
+		boolean abo;
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" select * from Abonnement where id_revue = ?"); 
 		requete.setInt(1, id);
 		ResultSet res  = requete.executeQuery();
 		
-		int nb = 0;
-		if (res.next()) {
-			nb = 1;
-		}
-		else {
-			nb = 0;
-		}
+		abo = res.next();
 		
 		if (requete != null)
 			requete.close();
@@ -80,43 +75,38 @@ public int getByRevueId(int id) {
 		if (laConnexion != null)
 			laConnexion.close();
 		
-		return nb;
+		return abo;
 		
 	}catch (SQLException sqle) {
 		System.out.println("Problème dans la requête ! " + sqle.getMessage());
 	}
-	return -1;
+	return true;
 }
 
 @Override
-public int getByClientId(int id) {
+public boolean getByClientId(int id) {
 	
 	try {
+		boolean abo;
 		Connection laConnexion = maConnexion.creeConnexion();
 		PreparedStatement requete = laConnexion.prepareStatement(" select * from Abonnement where id_client = ?"); 
 		requete.setInt(1, id);
 		ResultSet res  = requete.executeQuery();
 		
-		int nb = 0;
-		if (res.next()) {
-			nb = 1;
-		}
-		else {
-			nb = 0;
-		}
-		
+		abo = res.next();
+				
 		if (requete != null)
 			requete.close();
 		
 		if (laConnexion != null)
 			laConnexion.close();
 		
-		return nb;
+		return abo;
 		
 	}catch (SQLException sqle) {
 		System.out.println("Problème dans la requête ! " + sqle.getMessage());
 	}
-	return -1;
+	return true;
 }
 @Override
 public boolean create(Abonnement object) {

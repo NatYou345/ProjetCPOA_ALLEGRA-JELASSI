@@ -73,20 +73,6 @@ private Button btnGestionOptions;
 	{
 		//Stage secondStage = new Stage();
 		try {
-			/*
-			URL fxmlURL=getClass().getResource("GestionOptions.fxml");
-			FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-			Node root = fxmlLoader.load();
-			Scene scene = new Scene((VBox) root, 540, 300);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			secondStage.setScene(scene);
-			secondStage.setTitle("Gestion des options");
-			GestionOptionsController controller = loader.getController();
-	        controller.setDialogStage(dialogStage);
-			secondStage.show();
-			
-			*/
-			
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(MainApp.class.getResource("GestionOptions.fxml"));
 	        VBox vbox = (VBox) loader.load();
@@ -94,7 +80,7 @@ private Button btnGestionOptions;
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Gestion des options");
-	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initModality(Modality.APPLICATION_MODAL);
 	        //dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(vbox);
 	        dialogStage.setScene(scene);
@@ -104,8 +90,6 @@ private Button btnGestionOptions;
 	        
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
-
-	        
 	        
 			} 
 			catch (Exception e) {

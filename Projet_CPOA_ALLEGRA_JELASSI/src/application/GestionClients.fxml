@@ -50,9 +50,13 @@
             </Label>
             <TableView fx:id="tv_listeClients" prefHeight="126.0" prefWidth="290.0" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
               <columns>
-                <TableColumn fx:id="listeClients_nom" prefWidth="178.0" text="Nom" />
-                <TableColumn fx:id="listeClients_prenom" minWidth="0.0" prefWidth="129.0" text="Prenom" />
-                  <TableColumn fx:id="listeClients_ville" minWidth="0.0" prefWidth="143.0" text="Ville" />
+                <TableColumn fx:id="listeClients_nom" prefWidth="129.0" text="Nom" />
+                <TableColumn fx:id="listeClients_prenom" minWidth="0.0" prefWidth="106.0" text="Prenom" />
+                  <TableColumn fx:id="listeClients_num" minWidth="0.0" prefWidth="52.0" text="Num" />
+                  <TableColumn fx:id="listeClients_voie" minWidth="0.0" prefWidth="150.0" text="Voie" />
+                  <TableColumn fx:id="listeClients_cp" minWidth="0.0" prefWidth="62.0" text="Code postal" />
+                  <TableColumn fx:id="listeClients_ville" minWidth="0.0" prefWidth="100.0" text="Ville" />
+                  <TableColumn fx:id="listeClients_pays" minWidth="0.0" prefWidth="100.0" text="Pays" />
               </columns>
             </TableView>
             <Label text="Détail du client" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -128,6 +132,7 @@
                 <TableColumn fx:id="listeAbos_date_debut" prefWidth="98.40002286434174" text="Date de début" />
                 <TableColumn fx:id="listeAbos_date_fin" prefWidth="126.39997100830078" text="Date de fin" />
                   <TableColumn fx:id="listeAbos_id_abo" prefWidth="102.40008544921875" text="id_Abo" visible="false" />
+                  <TableColumn fx:id="listeAbos_tarif" prefWidth="102.40008544921875" text="Tarif" />
               </columns>
             </TableView>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">

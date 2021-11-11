@@ -108,15 +108,15 @@ public class ListeMemoireAbonnementDAO implements AbonnementDAO {
 	}
 
 	@Override
-	public int getByRevueId(int id) {
+	public boolean getByRevueId(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return true;
 	}
 
 	@Override
-	public int getByClientId(int id) {
+	public boolean getByClientId(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return true;
 	}
 
 	@Override

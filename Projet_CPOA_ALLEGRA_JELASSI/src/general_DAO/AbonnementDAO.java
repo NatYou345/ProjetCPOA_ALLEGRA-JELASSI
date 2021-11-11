@@ -19,9 +19,9 @@ public interface AbonnementDAO extends DAO<Abonnement> {
 
 	public ArrayList<AbonnementAff> findAllDetailsByClient(ClientAff cli) throws SQLException;
 
-	public int getByRevueId(int id);
+	public boolean getByRevueId(int id);
 
-	public int getByClientId(int id);
+	public boolean getByClientId(int id);
 
 	public ArrayList<AbonnementAff> findAllDetailsByRevue(RevuePeriodicite revue) throws SQLException;
 }

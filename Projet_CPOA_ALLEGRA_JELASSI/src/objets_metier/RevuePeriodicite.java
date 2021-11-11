@@ -181,6 +181,13 @@ public class RevuePeriodicite {
 		return libelle_periodicite;
 	}
 
+
+	public StringProperty tarifProperty() {
+		
+		return tarif_numero;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(description, id_periodicite, id_revue, libelle_periodicite, tarif_numero, titre, visuel);
@@ -201,6 +208,6 @@ public class RevuePeriodicite {
 				&& Objects.equals(visuel, other.visuel);
 	}
 
-	
+
 
 }

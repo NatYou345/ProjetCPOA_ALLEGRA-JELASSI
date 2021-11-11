@@ -39,7 +39,7 @@ public Client getById(int id) {
 		ResultSet res  = requete.executeQuery();
 		Client c = null;
 		if (res.next()) {
-			c = new Client(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),	res.getString(5),res.getString(6),res.getString(7),	res.getString(8));
+			c = new Client(res.getInt(1),res.getString(2),res.getString(3),res.getString(4), res.getString(5),res.getString(6),res.getString(7),	res.getString(8));
 
 		}
 		if (requete != null)

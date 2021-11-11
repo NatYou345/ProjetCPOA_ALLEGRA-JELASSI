@@ -43,11 +43,21 @@ public class GestionClientsController {
 @FXML
 private TableView <ClientAff> tv_listeClients;
 @FXML
+private TableColumn <ClientAff,String> listeClients_id_client;
+@FXML
 private TableColumn <ClientAff,String> listeClients_nom;
 @FXML
 private TableColumn <ClientAff,String> listeClients_prenom;
 @FXML
+private TableColumn <ClientAff,String> listeClients_num;
+@FXML
+private TableColumn <ClientAff,String> listeClients_voie;
+@FXML
+private TableColumn <ClientAff,String> listeClients_cp;
+@FXML
 private TableColumn <ClientAff,String> listeClients_ville;
+@FXML
+private TableColumn <ClientAff,String> listeClients_pays;
 @FXML
 private Label lbl_clientNom;
 @FXML
@@ -87,6 +97,8 @@ private TableColumn <AbonnementAff,LocalDate> listeAbos_date_fin;
 @FXML
 private TableColumn <AbonnementAff,String> listeAbos_id_abo;
 @FXML
+private TableColumn <AbonnementAff,String> listeAbos_tarif;
+@FXML
 private Button btn_ajouterAbo;
 @FXML
 private Button btn_modifierAbo;
@@ -103,6 +115,7 @@ public ObservableList<ClientAff> gettv_listeClients()
 {
 	return listeClientsAff;
 }
+
 public ObservableList<AbonnementAff> getListeAbonnements() 
 {
 	return listeAbonnementsAff;
@@ -133,12 +146,15 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	}
 	public void inittv_listeClients() throws SQLException {
 		tv_listeClients.getItems().clear();
-		//SolutionPersistance solPers = new SolutionPersistance();
-		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
 		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
+		//listeClients_id_client.setCellValueFactory(cellData -> cellData.getValue().id_clientProperty());
 		listeClients_nom.setCellValueFactory(cellData -> cellData.getValue().nomProperty());
 		listeClients_prenom.setCellValueFactory(cellData -> cellData.getValue().prenomProperty());
+		listeClients_num.setCellValueFactory(cellData -> cellData.getValue().numProperty());
+		listeClients_voie.setCellValueFactory(cellData -> cellData.getValue().voieProperty());
+		listeClients_cp.setCellValueFactory(cellData -> cellData.getValue().CPProperty());
 		listeClients_ville.setCellValueFactory(cellData -> cellData.getValue().villeProperty());
+		listeClients_pays.setCellValueFactory(cellData -> cellData.getValue().paysProperty());
 		
 	   	ArrayList<ClientAff> listeClientAff = daos.getClientDAO().findAllAff();
 	   	Iterator<ClientAff> itr = listeClientAff.iterator();
@@ -178,17 +194,13 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 
 	public void initListeAbonnement(ClientAff clientAff) throws SQLException, ParseException {
 		listeAbos.getItems().clear();
-		//SolutionPersistance solPers = new SolutionPersistance();
-		//DAOFactory daos = DAOFactory.getDAOFactory(solPers.getPers());
 		DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
 		
 		listeAbos_titre.setCellValueFactory(cellData -> cellData.getValue().getRevuePeriodicite().titreProperty());
 		listeAbos_periodicite.setCellValueFactory(cellData -> cellData.getValue().getRevuePeriodicite().libelle_periodiciteProperty());
-
-		//listeAbos_id_abo.setCellValueFactory(cellData -> String.valueOf(cellData.getValue().getId_abonnementProperty()));
-
 		listeAbos_date_debut.setCellValueFactory(cellData -> cellData.getValue().date_debutProperty());
 		listeAbos_date_fin.setCellValueFactory(cellData -> cellData.getValue().date_finProperty());
+		listeAbos_tarif.setCellValueFactory(cellData -> cellData.getValue().getRevuePeriodicite().tarifProperty());
 		
 	   	ArrayList<AbonnementAff> listeAbonnementAff = daos.getAbonnementDAO().findAllDetailsByClient(clientAff);
 	   	Iterator<AbonnementAff> itr = listeAbonnementAff.iterator();
@@ -199,7 +211,6 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 	   		// Recherche detail revue
 	   		RevuePeriodicite revueP = daos.getRevueDAO().getRPById(obj.id_revueProperty().getValue().intValue());
 	   		obj.setRevuePeriodicite(revueP);
-	   		
 	   		listeAbonnementsAff.add(obj);
 	   	}
 	   	listeAbos.setItems(getListeAbonnements());
@@ -218,7 +229,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 			DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());
 			Client obj = new Client(this.clientSelected.getId_client());
 
-			if(daos.getAbonnementDAO().getByClientId(this.clientSelected.getId_client()) == 0 ) {
+			if(daos.getAbonnementDAO().getByClientId(this.clientSelected.getId_client()) == false ) {
 			 	daos.getClientDAO().delete(obj);
 			 	tv_listeClients.getItems().remove(SelectedIndex);
 			}

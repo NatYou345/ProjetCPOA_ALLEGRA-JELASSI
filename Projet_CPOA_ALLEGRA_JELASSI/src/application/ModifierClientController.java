@@ -46,7 +46,11 @@ private Client client;
 private ClientAff clientA;
 private boolean nomSaisi = false;
 private boolean prenomSaisi = false;
+private boolean numSaisi = false;
+private boolean voieSaisie = false;
+private boolean cpSaisi = false;
 private boolean villeSaisie = false;
+private boolean paysSaisi = false;
 
 	public ModifierClientController() 
 	{
@@ -57,36 +61,82 @@ private boolean villeSaisie = false;
 	{
 		btn_modifier.setDisable(true);
 
-	   	
 	   	nom.textProperty().addListener((Observable,OldValue,NewValue)->
 	   	{this.nomSaisi = (NewValue != "");
-	   	if (nomSaisi && prenomSaisi && villeSaisie) {
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
 	   		btn_modifier.setDisable(false);
 	   	}
 	   	else 
 	   		{
-	   			btn_modifier.setDisable(true);
+	   		btn_modifier.setDisable(true);
 	   		}
 	   			
 	   		});
 	   	prenom.textProperty().addListener((Observable,OldValue,NewValue)->
 	   	{this.prenomSaisi = (NewValue != "");
-	   	if (nomSaisi && prenomSaisi && villeSaisie) {
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
 	   		btn_modifier.setDisable(false);
 	   	}
 	   	else 
 	   		{
-	   			btn_modifier.setDisable(true);
+	   		btn_modifier.setDisable(true);
 	   		}
 	   		});
-	   	ville.textProperty().addListener((Observable,OldValue,NewValue)->
-	   	{this.villeSaisie = (NewValue != "");
-	   	if (nomSaisi && prenomSaisi && villeSaisie) {
+
+	   	num.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.numSaisi = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
 	   		btn_modifier.setDisable(false);
 	   	}
 	   	else 
 	   		{
-	   			btn_modifier.setDisable(true);
+	   		btn_modifier.setDisable(true);
+	   		}
+	   			
+	   		});
+	   	
+	   	voie.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.voieSaisie = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_modifier.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_modifier.setDisable(true);
+	   		}
+	   		});
+	   	
+	   	cp.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.cpSaisi = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_modifier.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_modifier.setDisable(true);
+	   		}
+	   			
+	   		});
+	   	
+	   	ville.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.villeSaisie = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_modifier.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_modifier.setDisable(true);
+	   		}
+	   		});
+	   	
+	   	pays.textProperty().addListener((Observable,OldValue,NewValue)->
+	   	{this.paysSaisi = (NewValue != "");
+	   	if (nomSaisi && prenomSaisi && numSaisi && voieSaisie && cpSaisi && villeSaisie && paysSaisi) {
+	   		btn_modifier.setDisable(false);
+	   	}
+	   	else 
+	   		{
+	   		btn_modifier.setDisable(true);
 	   		}
 	   		});
 	}

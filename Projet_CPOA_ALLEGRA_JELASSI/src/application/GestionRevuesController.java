@@ -192,7 +192,7 @@ public ObservableList<AbonnementAff> getListeAbonnements()
 			DAOFactory daos = DAOFactory.getDAOFactory(application.MainApp.getSolPers());			
 			Revue obj = new Revue(this.revueSelected.getId_revue());
 			
-			if(daos.getAbonnementDAO().getByRevueId(this.revueSelected.getId_revue()) == 0 ) {
+			if(daos.getAbonnementDAO().getByRevueId(this.revueSelected.getId_revue()) == false ) {
 			 	daos.getRevueDAO().delete(obj);
 			 	listeRevues.getItems().remove(SelectedIndex);
 			 }

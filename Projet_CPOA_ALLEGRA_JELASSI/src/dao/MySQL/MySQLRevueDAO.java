@@ -66,9 +66,8 @@ public RevuePeriodicite getRPById(int id) {
 		ResultSet res  = requete.executeQuery();
 		RevuePeriodicite r = null;
 		if (res.next()) {
-			
-		r = new RevuePeriodicite(res.getInt(1),res.getString(2),res.getString(3),res.getString(4), res.getInt(5), res.getString(6));
 
+			r = new RevuePeriodicite(res.getInt(1),res.getString(2),res.getString(3),res.getString(4), res.getInt(5), res.getString(6));
 		}
 		if (requete != null)
 			requete.close();
